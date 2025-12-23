@@ -4,94 +4,46 @@
     require_once 'UserException.class.php';
 
 
-        class Modele {
+        abstract class Modele {
 
+//GET ALL TEMPLATE FUNCTION FOR ALL TABLES
+            public function getAll($table){
 
-
-            public function getAllUsers(){
-
-
-
-                $connexion = DbLBCL::getConnexion();
+                $connexion = DbLBCL::getConnexion();            //start connexion
 
                 try{
-                    $sql = "SELECT * FROM user_";
-                    $request = $connexion->query($sql);
-                    $records = $request->fetchAll(PDO::FETCH_ASSOC);
+                    $sql = "SELECT * FROM ".$table;
+                    $request = $connexion->query($sql);         
+                    $records = $request->fetchAll(PDO::FETCH_ASSOC); 
 
                     if($records){
                         return $records;
                     }
-                }catch(UserException $e){
+                }catch(ModeleException $e){
                     die('Err: '.$e->getMessage());
                 }
                 
 
             }
 
-            public function addUser(){
+//ADD TEMPLATE FUNCTION FAR ALL TABLES
+            public function add($table){
+
+
 
             }
 
-            public function deleteUser(){
+//DELETE USER
+//UPDATE USER
 
-            }
+//GET AD BY ID
+//GET AD BY USER
+//GET AD BY TITLE
+//GET AD BY PRICE
 
-            public function updateUser(){
+//DELETE AD
 
-            }
-
-
-
-
-            //Ads
-
-            public function getAllAds(){
-
-                $connexion = DbLBCL::getConnexion();
-
-                try{
-                    $sql = "SELECT * FROM annonce";
-                    $request = $connexion->query($sql);
-                    $records = $request->fetchAll(PDO::FETCH_ASSOC);
-
-                    if($records){
-                        return $records;
-                    }
-                }catch(UserException $e){
-                    die('Err: '.$e->getMessage());
-                }
-
-            }
-
-            public function getAdById(){
-
-            }
-
-            public function getAdByUser(){
-
-            }
-
-            public function getAdByTitle(){
-
-            }
-
-            public function getAdByPrice(){
-
-            }
-
-            public function deleteAd(){
-
-            }
-
-            public function updateAd(){
-
-            }
-            public function addAd(){
-
-            }
-
-
+//ADD AD
 
 
 

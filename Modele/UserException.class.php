@@ -1,5 +1,5 @@
 <?php
 
-    class UserException extends Exception {
-        
+    class ModeleException extends Exception {
+
     }
