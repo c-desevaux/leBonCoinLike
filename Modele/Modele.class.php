@@ -1,7 +1,7 @@
 <?php
 
     require_once 'index.php';
-    require_once 'UserException.class.php';
+    require_once 'ModeleException.class.php';
 
 
         abstract class Modele {
@@ -9,16 +9,23 @@
 //GET ALL TEMPLATE FUNCTION FOR ALL TABLES
             public function getAll($table){
 
+                
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
                 try{
-                    $sql = "SELECT * FROM ".$table;
-                    $request = $connexion->query($sql);         
-                    $records = $request->fetchAll(PDO::FETCH_ASSOC); 
 
-                    if($records){
-                        return $records;
+                    if(DbLBCL::getTables($table)){
+                        $sql = "SELECT * FROM ".$table;
+                        $request = $connexion->query($sql);         
+                        $records = $request->fetchAll(PDO::FETCH_ASSOC); 
+
+                        if($records){
+                            return $records;
+                        }
+                    }else{
+                        throw new ModeleException("La table ciblée n'existe pas");
                     }
+                    
                 }catch(ModeleException $e){
                     die('Err: '.$e->getMessage());
                 }
@@ -29,6 +36,7 @@
 //ADD TEMPLATE FUNCTION FAR ALL TABLES
             public function add($table){
 
+                $connexion = DbLBCL::getConnexion();            //start connexion
 
 
             }
