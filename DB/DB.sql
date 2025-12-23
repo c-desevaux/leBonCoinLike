@@ -13,7 +13,7 @@ CREATE TABLE Annonce(
    titleAd VARCHAR(50)  NOT NULL,
    txtAd VARCHAR(500)  NOT NULL,
    dateAd DATETIME NOT NULL,
-   priceAd DECIMAL(15,2)   NOT NULL,
+   priceAd DECIMAL(15,2)  NOT NULL,
    idUser INT NOT NULL,
    PRIMARY KEY(idAd),
    FOREIGN KEY(idUser) REFERENCES User_(idUser) ON DELETE CASCADE
@@ -27,11 +27,28 @@ CREATE TABLE Image(
 );
 
 
+------------------------------------------- Jeu de donné -----------------------------------------------
 
 
+------ Users ------
+
+INSERT INTO User_ (pseudUser, emailUser, dateUser, pwUser)
+VALUES
+('Bernard', 'bernard@example.com', '2025-12-23 10:00:00', 'azerty123'),
+('Bob', 'bob@example.com', '2025-12-22 14:30:00', 'wvcxnvb654'),
+('Charlie', 'charlie@example.com', '2025-12-20 09:15:00', 'lmkjgh789'),
+('Julie', 'julie@example.com', '2025-12-21 18:45:00', 'qsdgfgh852');
 
 
+------Annonces-------
 
+
+INSERT INTO Annonce (titleAd, txtAd, dateAd, priceAd, idUser)
+VALUES
+('Velo de ville',
+"Solide et agile vélo de Ville parmi plusieurs - 7 vitesses - Il conviendra à des personnes jusqu'à 175 cm.",
+'2025-12-25 18:45:00',
+320, 2)
 
 
 

@@ -48,6 +48,20 @@
 
             public function getAllAds(){
 
+                $connexion = DbLBCL::getConnexion();
+
+                try{
+                    $sql = "SELECT * FROM annonce";
+                    $request = $connexion->query($sql);
+                    $records = $request->fetchAll(PDO::FETCH_ASSOC);
+
+                    if($records){
+                        return $records;
+                    }
+                }catch(UserException $e){
+                    die('Err: '.$e->getMessage());
+                }
+
             }
 
             public function getAdById(){

@@ -8,4 +8,7 @@
     print_r(DbLBCL::getConnexion());
 
     $users = new Modele();
+    $ads = new Modele();
     print_r($users->getAllUsers());
+
+    print_r($ads->getAllAds());
