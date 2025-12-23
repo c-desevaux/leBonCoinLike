@@ -2,14 +2,36 @@
     require_once 'Modele.class.php';
 
     class AdModele extends Modele {
+
+        private $tableName = "ad";
+        private $idName = "idAd";
         
+
+//---------------------------------------------GET FUNCTIONS---------------------------------------------------
             public function getAllAds()
             {
-                return parent::getAll("ad");
+                return parent::getAll($this->tableName);
             }
 
+            public function getAdById(int $id){
+                return parent::getBy($this->tableName, $this->idName, $id);
+            }
+
+            
+
+            public function getAdByTitle(string $title){
+                $title = "%".$title."%";
+                return parent::getLike($this->tableName, "titleAd", $title);
+            }
+
+
+
+
+
+
+//---------------------------------------------DELETE FUNCTIONS------------------------------------------------
             public function deleteAd(int $id): void{
-                parent::delete("ad", $id);
+                parent::delete($this->tableName, $id);
             }
 
 
