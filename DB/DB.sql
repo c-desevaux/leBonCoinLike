@@ -1,0 +1,39 @@
+CREATE TABLE User(
+   idUser INT AUTO_INCREMENT,
+   pseudUser VARCHAR(50)  NOT NULL,
+   emailUser VARCHAR(50)  NOT NULL,
+   dateUser DATETIME NOT NULL,
+   pwUser VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(idUser),
+   UNIQUE(emailUser)
+);
+
+CREATE TABLE Annonce(
+   idAd INT AUTO_INCREMENT,
+   titleAd VARCHAR(50)  NOT NULL,
+   txtAd VARCHAR(500)  NOT NULL,
+   dateAd DATETIME NOT NULL,
+   priceAd DECIMAL(15,2)   NOT NULL,
+   idUser INT NOT NULL,
+   PRIMARY KEY(idAd),
+   FOREIGN KEY(idUser) REFERENCES User_(idUser) ON DELETE CASCADE
+);
+
+CREATE TABLE Image(
+   idImg INT AUTO_INCREMENT,
+   idAd INT NOT NULL,
+   PRIMARY KEY(idImg),
+   FOREIGN KEY(idAd) REFERENCES Annonce(idAd) ON DELETE CASCADE
+);
+
+
+
+
+
+
+
+
+
+
+
+
