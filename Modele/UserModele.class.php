@@ -10,5 +10,8 @@
             return parent::getAll("user_");
         }
 
+        public function deleteAd(int $id): void{
+            parent::delete("user_", $id);
+        }
         
     }

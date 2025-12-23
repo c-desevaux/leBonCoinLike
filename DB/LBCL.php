@@ -43,7 +43,7 @@ echo "Connexion reussit <br>";
         }
 
 //Fonction qui permet de verifier l'existance de la table avant de faire les requetes sql
-        public static function getTables($table): bool{
+        public static function checkTables($table): bool{
 
             if(file_exists("DB/config.ini")){
 echo "Fichier trouvé <br>";

@@ -8,5 +8,9 @@
                 return parent::getAll("ad");
             }
 
+            public function deleteAd(int $id): void{
+                parent::delete("ad", $id);
+            }
+
 
     }

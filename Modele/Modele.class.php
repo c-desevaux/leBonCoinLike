@@ -14,11 +14,11 @@
 
                 try{
 
-                    if(DbLBCL::getTables($table)){
+                    if(DbLBCL::checkTables($table)){
                         $sql = "SELECT * FROM ".$table;
                         $request = $connexion->query($sql);         
                         $records = $request->fetchAll(PDO::FETCH_ASSOC); 
-
+                        $request->closeCursor();
                         if($records){
                             return $records;
                         }
@@ -38,10 +38,37 @@
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
+                if(DbLBCL::checkTables($table)){
+
+                }
+
+            }
+            
+//DELETE * BY ID
+            public function delete(string $table, int $id){
+
+                $connexion = DbLBCL::getConnexion();
+
+                try{
+                    if(DbLBCL::checkTables($table)){
+
+                        $sql = "DELETE FROM ".$table." WHERE id=?";
+                        $request = $connexion->prepare($sql);
+                        $request->execute([$id]);
+                        $request->closeCursor();
+
+                    }
+                }catch(ModeleException $e){
+                    die('Err: '.$e->getMessage());
+                }
+
+                
 
             }
 
-//DELETE USER
+
+
+
 //UPDATE USER
 
 //GET AD BY ID
@@ -49,7 +76,7 @@
 //GET AD BY TITLE
 //GET AD BY PRICE
 
-//DELETE AD
+//DELETE AD BY ID
 
 //ADD AD
 
