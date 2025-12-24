@@ -43,6 +43,8 @@ VALUES
 ('Charlie', 'charlie@example.com', '2025-12-20 09:15:00', 'lmkjgh789'),
 ('Julie', 'julie@example.com', '2025-12-21 18:45:00', 'qsdgfgh852');
 
+('Marie', 'marie@example.com', '2025-12-21 18:45:00', 'fdsfdsq564645');
+
 
 ------Annonces-------
 

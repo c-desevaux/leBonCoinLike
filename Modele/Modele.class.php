@@ -91,14 +91,14 @@
 //---------------------------------------------------------------DELETE FUNCTIONS---------------------------------------------------
 
 //DELETE * BY ID
-            public function delete(string $table, int $id){
+            public function delete(string $table, string $idName, int $id){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
                 try{
                     if(DbLBCL::checkTables($table)){
 
-                        $sql = "DELETE FROM ".$table." WHERE id=?";
+                        $sql = "DELETE FROM ".$table." WHERE ".$idName." = ?";
                         $request = $connexion->prepare($sql);
                         $request->execute([$id]);
                         $request->closeCursor();
@@ -113,7 +113,8 @@
 
 
 
-//ADD TEMPLATE FUNCTION FAR ALL TABLES
+//-------------------------------------------------ADD TEMPLATE FUNCTION FAR ALL TABLES-------------------------------------------------------
+
             public function add($table){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion

@@ -7,10 +7,16 @@
 
 
 
-    print_r(DbLBCL::getConnexion());
-
     $users = new UserModele();
     $ads = new AdModele();
+
+ 
+
     
     print_r($users->getAllUsers());
+    echo "<br> <br> <br>";
     print_r($ads->getAllAds());
+
+    $users->deleteUserById(6);
+    echo "<br> <br> <br>";
+    print_r($users->getAllUsers());

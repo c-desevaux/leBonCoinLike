@@ -19,13 +19,14 @@
         }
 
         public function getUserByPseudo(string $pseudo){
-            return parent::getBy($this->tableName,"pseudUser",$pseudo);
+            $pseudo = "%".$pseudo."%";
+            return parent::getLike($this->tableName,"pseudUser",$pseudo);
         }
 
 
 //-------------------------------------------DELETE FUNCTIONS------------------------------------------------        
-        public function deleteAd(int $id): void{
-            parent::delete($this->tableName, $id);
+        public function deleteUserById(int $id): void{
+            parent::delete($this->tableName, $this->idName ,$id);
         }
         
     }

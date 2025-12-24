@@ -30,8 +30,8 @@
 
 
 //---------------------------------------------DELETE FUNCTIONS------------------------------------------------
-            public function deleteAd(int $id): void{
-                parent::delete($this->tableName, $id);
+            public function deleteAdById(int $id): void{
+                parent::delete($this->tableName, $this->idName, $id);
             }
 
 
