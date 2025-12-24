@@ -33,7 +33,21 @@
 //--------------------------------------------ADD FUNCTION---------------------------------------------------
 
         public static function addUser(string $pseudo, string $email, string $pwd){
-            $user = new User($pseudo, $email, $pwd);
+            $connexion = DbLBCL::getConnexion();
+
+            try{
+                $user = new User($pseudo, $email, $pwd);
+
+                $sql = "INSERT INSERT INTO User_ (pseudUser, emailUser, pwUser)
+                VALUES (:pseudo, :email, :pwd)";
+                $request = $connexion->prepare($sql);
+                $request->execute([]);
+
+                $request->closeCursor();
+            }catch(UserException $e){
+                die("Err: ".$e->getMessage());
+            }
+            
 
 
         }
