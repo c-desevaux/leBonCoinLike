@@ -7,6 +7,8 @@
         private $pseudo;
         private $email;
         private $pwd;
+        private $id;
+        private $dateCreation;
         
 
         public function __construct(string $pseudo, string $email, string $pwd)
@@ -15,6 +17,7 @@
                 $this->setPseudo($pseudo);
                 $this->setEmail($email);
                 $this->setPwd($pwd);
+
             }catch(UserException $e){
                 die ("Err: ".$e->getMessage());
             }
@@ -37,6 +40,13 @@
             return $this->pwd;
         }
 
+        public function getId():int {
+            return $this->id;
+        }
+
+        public function getDateCreation():string {
+            return $this->dateCreation;
+        }
 
 //SETTERS
 
@@ -63,7 +73,7 @@
 
         public function setPwd($pwd):void {
 
-            if(preg_match('/^(?=.*[A-Z])(?=.*\d).{8,}$/', $pwd)){
+            if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/', $pwd)){
                 $this->pwd = $pwd;
             }else{
                 throw new UserException("mot de passe trop faible");
@@ -71,6 +81,11 @@
             $this->pwd = $pwd;
         }
 
-
+        public function setId($id):void {
+            $this->id = $id;
+        }
+        public function setDateCreation($dateCreation):void {
+            $this->dateCreation = $dateCreation;
+        }
 
     }
