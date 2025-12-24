@@ -1,9 +1,13 @@
 <?php
     require_once 'Modele/Modele.class.php';
 
+
+
     function homePage(){
-        
+        require 'Vue/vueHome.php';
     }
+
+    
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adsList(){
         $ads  = AdModele::getAllAds();

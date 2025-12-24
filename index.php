@@ -6,25 +6,23 @@
     require_once 'Modele/UserModele.class.php';
     require_once 'Controler/Controler.class.php';
 
-    //print_r(UserModele::getAllUsers());
-    echo "<br><br><br>";
-
-    //UserModele::deleteUserByName('corentin');
-    //UserModele::addUser('tristan', 'tristan.tristan@gmail.com', 'Caca08++');
-    //print_r(UserModele::getUserByPseudo('tristan'));
-    //print_r(UserModele::getUserByPseudo('tristan')[0]['idUser']);
+    try{
+        if(isset($_GET['action'])){
+            if($_GET['action'] == 'userList'){
+                userList();
+            }else if($_GET['action'] == 'adList'){
+                adsList();
+            }else{
+                homePage();
+            }
+        }else{
+            homePage();
+        }
+    }catch(Exception $e){
+        die("Err: ".$e->getMessage());
+    }
+    
 
     
     
-    //AdModele::addAd('Fifa 15', 'jeu en tres bon etat a vendre sur region ebreuïtienne', 13.99, UserModele::getUserByPseudo('tristan')[0]['idUser']);
-    //print_r(AdModele::getAdByTitle('Fifa'));
-
-    echo "<body style='background-color: lightblue;'></body>";
-
-    print_r(UserModele::getAllUsers());
-
-    echo "<br><br><br>";
-
-    adsList();
-    userList();
     

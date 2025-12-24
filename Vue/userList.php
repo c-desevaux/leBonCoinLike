@@ -3,6 +3,7 @@
 
 <?php ob_start(); ?>
 
+<h1>Liste des utilisateurs</h1>
 
 <?php foreach ($users as $user): ?>
 
@@ -13,6 +14,8 @@
     <br>
 
 <?php endforeach;?>
+
+<a href="index.php?action=home">Retour</a>
 <?php $content = ob_get_clean(); ?>
 
 <?php require 'template.php' ?>
