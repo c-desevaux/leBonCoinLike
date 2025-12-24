@@ -17,7 +17,7 @@
 
 <?php endforeach;?>
 
-<a href="index.php?action=home">Retour</a>
+<a class="btn back" href="index.php?action=home">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 
