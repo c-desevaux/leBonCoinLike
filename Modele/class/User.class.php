@@ -8,6 +8,7 @@
         private $email;
         private $pwd;
         private $id;
+        private $dateCreation;
         
 
         public function __construct(string $pseudo, string $email, string $pwd)
@@ -43,6 +44,9 @@
             return $this->id;
         }
 
+        public function getDateCreation():string {
+            return $this->dateCreation;
+        }
 
 //SETTERS
 
@@ -79,6 +83,9 @@
 
         public function setId($id):void {
             $this->id = $id;
+        }
+        public function setDateCreation($dateCreation):void {
+            $this->dateCreation = $dateCreation;
         }
 
     }

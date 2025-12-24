@@ -54,6 +54,7 @@
 
                 $request->closeCursor();
                 $user->setId($connexion->lastInsertId());       //On rajoute l'id a l'objet user creer apres l'insert
+                $user->setDateCreation((UserModele::getUserById($user->getId()))[0]['dateUser']);
             }catch(UserException $e){
                 die("Err: ".$e->getMessage());
             }

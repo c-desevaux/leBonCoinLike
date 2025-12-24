@@ -13,7 +13,7 @@
 
 
 
-//GET ALL TEMPLATE FUNCTION, FOR ALL TABLES
+//--------------------GET ALL TEMPLATE FUNCTION, FOR ALL TABLES----------------------
             public static function getAll(string $table){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
@@ -37,7 +37,7 @@
                 }
             }
 
-//Get one or more record from a specific table choosing the column name
+//-----------------Get one or more record from a specific table choosing the column name--------------------
             public static function getBy(string $table, string $column, string $value){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
@@ -63,7 +63,7 @@
 
             }
 
-//Template for all search with LIKE functions
+//--------------------Template for all search with LIKE functions------------------------------
             public static function getLike(string $table, string $column, string $value){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
@@ -92,7 +92,7 @@
 
 //---------------------------------------------------------------DELETE FUNCTIONS---------------------------------------------------
 
-//TEMPLATE DELETE * BY *
+//-----TEMPLATE DELETE * BY *
             public static function delete(string $table, string $column, $value){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
