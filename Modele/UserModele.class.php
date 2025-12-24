@@ -4,29 +4,38 @@
 
     class UserModele extends Modele {
 
-        private $tableName = "user_";
-        private $idName = "idUser";
+        private static $tableName = "user_";
+        private static $idName = "idUser";
 
 
 
 //---------------------------------------------GET FUNCTIONS-------------------------------------------------
-        public function getAllUsers(){
-            return parent::getAll($this->tableName);
+        public static function getAllUsers(){
+            return parent::getAll(self::$tableName);
         }
 
-        public function getUserById(int $id){
-            return parent::getBy($this->tableName, $this->idName, $id);
+        public static function getUserById(int $id){
+            return parent::getBy(self::$tableName, self::$idName, $id);
         }
 
-        public function getUserByPseudo(string $pseudo){
+        public static function getUserByPseudo(string $pseudo){
             $pseudo = "%".$pseudo."%";
-            return parent::getLike($this->tableName,"pseudUser",$pseudo);
+            return parent::getLike(self::$tableName,"pseudUser",$pseudo);
         }
 
 
 //-------------------------------------------DELETE FUNCTIONS------------------------------------------------        
-        public function deleteUserById(int $id): void{
-            parent::delete($this->tableName, $this->idName ,$id);
+        public static function deleteUserById(int $id): void{
+            parent::delete(self::$tableName, self::$idName ,$id);
+        }
+
+
+//--------------------------------------------ADD FUNCTION---------------------------------------------------
+
+        public static function addUser(string $pseudo, string $email, string $pwd){
+            $user = new User($pseudo, $email, $pwd);
+
+
         }
         
     }

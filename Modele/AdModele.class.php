@@ -3,25 +3,24 @@
 
     class AdModele extends Modele {
 
-        private $tableName = "ad";
-        private $idName = "idAd";
+        private static $tableName = "ad";
+        private static $idName = "idAd";
         
 
 //---------------------------------------------GET FUNCTIONS---------------------------------------------------
-            public function getAllAds()
+
+            public static function getAllAds()
             {
-                return parent::getAll($this->tableName);
+                return parent::getAll(self::$tableName);
             }
 
-            public function getAdById(int $id){
-                return parent::getBy($this->tableName, $this->idName, $id);
+            public static function getAdById(int $id){
+                return parent::getBy(self::$tableName, self::$idName, $id);
             }
 
-            
-
-            public function getAdByTitle(string $title){
+            public static function getAdByTitle(string $title){
                 $title = "%".$title."%";
-                return parent::getLike($this->tableName, "titleAd", $title);
+                return parent::getLike(self::$tableName, "titleAd", $title);
             }
 
 
@@ -30,8 +29,9 @@
 
 
 //---------------------------------------------DELETE FUNCTIONS------------------------------------------------
-            public function deleteAdById(int $id): void{
-                parent::delete($this->tableName, $this->idName, $id);
+
+            public static function deleteAdById(int $id): void{
+                parent::delete(self::$tableName, self::$idName, $id);
             }
 
 

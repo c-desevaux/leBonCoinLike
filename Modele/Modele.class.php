@@ -2,6 +2,8 @@
 
     require_once 'index.php';
     require_once 'ModeleException.class.php';
+    require_once 'class/Ad.class.php';
+    require_once 'class/User.class.php';
 
 
         abstract class Modele {
@@ -12,7 +14,7 @@
 
 
 //GET ALL TEMPLATE FUNCTION, FOR ALL TABLES
-            public function getAll(string $table){
+            public static function getAll(string $table){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
@@ -36,7 +38,7 @@
             }
 
 //Get one or more record from a specific table choosing the column name
-            public function getBy(string $table, string $column, string $value){
+            public static function getBy(string $table, string $column, string $value){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
@@ -62,7 +64,7 @@
             }
 
 //Template for all search with LIKE functions
-            public function getLike(string $table, string $column, string $value){
+            public static function getLike(string $table, string $column, string $value){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
@@ -91,7 +93,7 @@
 //---------------------------------------------------------------DELETE FUNCTIONS---------------------------------------------------
 
 //DELETE * BY ID
-            public function delete(string $table, string $idName, int $id){
+            public static function delete(string $table, string $idName, int $id){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
@@ -115,7 +117,7 @@
 
 //-------------------------------------------------ADD TEMPLATE FUNCTION FAR ALL TABLES-------------------------------------------------------
 
-            public function add($table){
+            public static function add($table){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 

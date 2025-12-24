@@ -7,16 +7,16 @@
 
 
 
-    $users = new UserModele();
-    $ads = new AdModele();
+    
+ 
 
  
 
     
-    print_r($users->getAllUsers());
+    print_r(UserModele::getAllUsers());
     echo "<br> <br> <br>";
-    print_r($ads->getAllAds());
+    print_r(AdModele::getAllAds());
 
-    $users->deleteUserById(6);
+   
     echo "<br> <br> <br>";
-    print_r($users->getAllUsers());
+    print_r(UserModele::getAllUsers());
