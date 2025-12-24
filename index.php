@@ -7,10 +7,16 @@
 
 
 
-    print_r(DbLBCL::getConnexion());
-
-    $users = new UserModele();
-    $ads = new AdModele();
     
-    print_r($users->getAllUsers());
-    print_r($ads->getAllAds());
+ 
+
+ 
+
+    
+    print_r(UserModele::getAllUsers());
+    echo "<br> <br> <br>";
+    print_r(AdModele::getAllAds());
+
+   
+    echo "<br> <br> <br>";
+    print_r(UserModele::getAllUsers());

@@ -6,7 +6,7 @@ CREATE TABLE User_(
    idUser INT AUTO_INCREMENT,
    pseudUser VARCHAR(50)  NOT NULL,
    emailUser VARCHAR(50)  NOT NULL,
-   dateUser DATETIME NOT NULL,
+   dateUser DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
    pwUser VARCHAR(50)  NOT NULL,
    PRIMARY KEY(idUser),
    UNIQUE(emailUser)
@@ -16,7 +16,7 @@ CREATE TABLE Ad(
    idAd INT AUTO_INCREMENT,
    titleAd VARCHAR(50)  NOT NULL,
    txtAd VARCHAR(500)  NOT NULL,
-   dateAd DATETIME NOT NULL,
+   dateAd DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
    priceAd DECIMAL(15,2)  NOT NULL,
    idUser INT NOT NULL,
    PRIMARY KEY(idAd),
@@ -42,6 +42,10 @@ VALUES
 ('Bob', 'bob@example.com', '2025-12-22 14:30:00', 'wvcxnvb654'),
 ('Charlie', 'charlie@example.com', '2025-12-20 09:15:00', 'lmkjgh789'),
 ('Julie', 'julie@example.com', '2025-12-21 18:45:00', 'qsdgfgh852');
+
+INSERT INTO User_ (pseudUser, emailUser, dateUser, pwUser)
+VALUES
+('Marie', 'marie@example.com', '2025-12-21 18:49:00', 'fdsfdsq564645');
 
 
 ------Annonces-------

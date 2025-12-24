@@ -4,28 +4,52 @@
 
     class UserModele extends Modele {
 
-        private $tableName = "user_";
-        private $idName = "idUser";
+        private static $tableName = "user_";
+        private static $idName = "idUser";
 
 
 
 //---------------------------------------------GET FUNCTIONS-------------------------------------------------
-        public function getAllUsers(){
-            return parent::getAll($this->tableName);
+        public static function getAllUsers(){
+            return parent::getAll(self::$tableName);
         }
 
-        public function getUserById(int $id){
-            return parent::getBy($this->tableName, $this->idName, $id);
+        public static function getUserById(int $id){
+            return parent::getBy(self::$tableName, self::$idName, $id);
         }
 
-        public function getUserByPseudo(string $pseudo){
-            return parent::getBy($this->tableName,"pseudUser",$pseudo);
+        public static function getUserByPseudo(string $pseudo){
+            $pseudo = "%".$pseudo."%";
+            return parent::getLike(self::$tableName,"pseudUser",$pseudo);
         }
 
 
 //-------------------------------------------DELETE FUNCTIONS------------------------------------------------        
-        public function deleteAd(int $id): void{
-            parent::delete($this->tableName, $id);
+        public static function deleteUserById(int $id): void{
+            parent::delete(self::$tableName, self::$idName ,$id);
+        }
+
+
+//--------------------------------------------ADD FUNCTION---------------------------------------------------
+
+        public static function addUser(string $pseudo, string $email, string $pwd){
+            $connexion = DbLBCL::getConnexion();
+
+            try{
+                $user = new User($pseudo, $email, $pwd);
+
+                $sql = "INSERT INSERT INTO User_ (pseudUser, emailUser, pwUser)
+                VALUES (:pseudo, :email, :pwd)";
+                $request = $connexion->prepare($sql);
+                $request->execute([]);
+
+                $request->closeCursor();
+            }catch(UserException $e){
+                die("Err: ".$e->getMessage());
+            }
+            
+
+
         }
         
     }
