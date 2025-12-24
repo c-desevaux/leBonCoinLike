@@ -92,17 +92,17 @@
 
 //---------------------------------------------------------------DELETE FUNCTIONS---------------------------------------------------
 
-//DELETE * BY ID
-            public static function delete(string $table, string $idName, int $id){
+//TEMPLATE DELETE * BY *
+            public static function delete(string $table, string $column, $value){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
 
                 try{
                     if(DbLBCL::checkTables($table)){
 
-                        $sql = "DELETE FROM ".$table." WHERE ".$idName." = ?";
+                        $sql = "DELETE FROM ".$table." WHERE ".$column." = ?";
                         $request = $connexion->prepare($sql);
-                        $request->execute([$id]);
+                        $request->execute([$value]);
                         $request->closeCursor();
 
                     }

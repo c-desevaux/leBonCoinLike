@@ -24,15 +24,21 @@
             }
 
 
-
-
-
-
 //---------------------------------------------DELETE FUNCTIONS------------------------------------------------
 
             public static function deleteAdById(int $id): void{
                 parent::delete(self::$tableName, self::$idName, $id);
             }
 
+    
 
+//-----------------------------------------------ADD FUNCTION--------------------------------------------------
+
+            public static function addAd(string $title, string $txt, float $price, User $user){
+
+
+
+
+
+            }
     }

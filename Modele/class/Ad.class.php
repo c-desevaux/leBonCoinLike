@@ -8,9 +8,10 @@
         private $title;
         private $txt;
         private $price;
+        private $user;
 
 
-        public function __construct(string $title, string $txt, float $price){
+        public function __construct(string $title, string $txt, float $price, User $user){
 
 
             try{
@@ -18,6 +19,7 @@
                 $this->setTitle($title);
                 $this->setTxt($txt);
                 $this->setPrice($price);
+                $this->setUser($user);
 
             }catch(AdException $e){
                 die("Err: ".$e->getMessage());
@@ -27,8 +29,7 @@
 
 //GETTERS
 
-        public function getTitle():string {
-            
+        public function getTitle():string {           
             return $this->title;
         }
 
@@ -38,6 +39,10 @@
 
         public function getPrice():float {
             return $this->price;
+        }
+
+        public function getUser():User {
+            return $this->user;
         }
 
 
@@ -69,6 +74,16 @@
                 $this->price=$price;
             }else{
                 throw new AdException ("Prix non valide");
+            }
+
+        }
+
+        public function setUser($user): void {
+
+            if(UserModele::getUserById($user->getId())){ //On regarde si l'utilisateur existe dans la base de donnée
+                $this->user = $user;
+            }else{
+                throw new AdException ("Utilisateur introuvable");
             }
 
         }

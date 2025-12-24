@@ -7,6 +7,7 @@
         private $pseudo;
         private $email;
         private $pwd;
+        private $id;
         
 
         public function __construct(string $pseudo, string $email, string $pwd)
@@ -15,6 +16,7 @@
                 $this->setPseudo($pseudo);
                 $this->setEmail($email);
                 $this->setPwd($pwd);
+
             }catch(UserException $e){
                 die ("Err: ".$e->getMessage());
             }
@@ -35,6 +37,10 @@
 
         public function getPwd():string {
             return $this->pwd;
+        }
+
+        public function getId():int {
+            return $this->id;
         }
 
 
@@ -63,7 +69,7 @@
 
         public function setPwd($pwd):void {
 
-            if(preg_match('/^(?=.*[A-Z])(?=.*\d).{8,}$/', $pwd)){
+            if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/', $pwd)){
                 $this->pwd = $pwd;
             }else{
                 throw new UserException("mot de passe trop faible");
@@ -71,6 +77,8 @@
             $this->pwd = $pwd;
         }
 
-
+        public function setId($id):void {
+            $this->id = $id;
+        }
 
     }

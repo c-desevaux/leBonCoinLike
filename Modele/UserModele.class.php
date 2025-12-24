@@ -1,6 +1,7 @@
 <?php
 
     require_once 'Modele.class.php';
+    
 
     class UserModele extends Modele {
 
@@ -10,6 +11,7 @@
 
 
 //---------------------------------------------GET FUNCTIONS-------------------------------------------------
+
         public static function getAllUsers(){
             return parent::getAll(self::$tableName);
         }
@@ -24,9 +26,14 @@
         }
 
 
-//-------------------------------------------DELETE FUNCTIONS------------------------------------------------        
+//-------------------------------------------DELETE FUNCTIONS------------------------------------------------  
+
         public static function deleteUserById(int $id): void{
-            parent::delete(self::$tableName, self::$idName ,$id);
+            parent::delete(self::$tableName, self::$idName , $id);
+        }
+
+        public static function deleteUserByName(string $name):void{
+            parent::delete(self::$tableName, 'pseudUser', $name);
         }
 
 
@@ -38,18 +45,19 @@
             try{
                 $user = new User($pseudo, $email, $pwd);
 
-                $sql = "INSERT INSERT INTO User_ (pseudUser, emailUser, pwUser)
+                $sql = "INSERT INTO User_ (pseudUser, emailUser, pwUser)
                 VALUES (:pseudo, :email, :pwd)";
                 $request = $connexion->prepare($sql);
-                $request->execute([]);
+                $request->execute(['pseudo' => $user->getPseudo(),
+                                    'email' => $user->getEmail(),
+                                    'pwd' => $user->getPwd()]);
 
                 $request->closeCursor();
+                $user->setId($connexion->lastInsertId());       //On rajoute l'id a l'objet user creer apres l'insert
             }catch(UserException $e){
                 die("Err: ".$e->getMessage());
             }
             
-
-
         }
         
     }
