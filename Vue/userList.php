@@ -5,17 +5,17 @@
 
 <h1>Liste des utilisateurs</h1>
 
-<?php foreach ($users as $user): ?>
+<?php if($users){foreach ($users as $user): ?>
 
-    <div>Pseudo de l'utilisateur: <?= $user['pseudUser'] ?></div>
-    <div>Email de l'utilisateur: <?= $user['emailUser'] ?></div>
-    <div>Date d'inscription de l'utilisateur: <?= $user['dateUser'] ?></div>
-    <div>Identifiant de l'utilisateur: <?= $user['idUser'] ?></div>
+    <div><?= $user['pseudUser'] ?></div>
+    <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détail</a>
+    <a class="btn del" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
     <br>
 
-<?php endforeach;?>
+<?php endforeach;}?>
 
-<a class="btn back" href="index.php?action=home">Retour</a>
+
+<a class="btn back" href="index.php?action=userList">Retour</a>
 <?php $content = ob_get_clean(); ?>
 
 <?php require 'template.php' ?>

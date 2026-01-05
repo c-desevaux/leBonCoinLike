@@ -12,6 +12,10 @@
                 userList();
             }else if($_GET['action'] == 'adList'){
                 adsList();
+            }else if($_GET['action'] == 'delUser'){
+                userDelete($_GET['id']);
+            }else if($_GET['action'] == 'detailUser'){
+                userDetail($_GET['id']);
             }else{
                 homePage();
             }

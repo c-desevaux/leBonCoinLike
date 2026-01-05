@@ -31,3 +31,9 @@
         $user = UserModele::getUserById($id);
         require 'Vue/userDetail.php';
     }
+
+    function userDelete(int $id){
+        $users = UserModele::deleteUserById($id);
+        userList();
+    }
+    
