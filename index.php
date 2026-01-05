@@ -18,6 +18,10 @@
                 userDelete($_GET['id']);
             }else if($_GET['action'] == 'delAd'){
                 adDelete($_GET['id']);
+            }else if($_GET['action'] == 'editAd'){
+                editAd($_GET['id']);
+            }else if($_GET['action'] == 'editAdValidation'){
+                editAdValidation($_POST['idAd'], $_POST['titleAd'], $_POST['txtAd'], $_POST['priceAd']);
             }else if($_GET['action'] == 'detailUser'){
                 userDetail($_GET['id']);
             }else if($_GET['action'] == 'detailAd'){

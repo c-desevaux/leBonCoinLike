@@ -15,8 +15,8 @@
     <div>Identifiant de l'auteur de l'annonce: <?=  $ad['idUser']?></div>
     <div>
         <a class="btn del" href="index.php?action=detailUser&id=<?=  $ad['idUser']?>">Voir le profil de l'annonceur(e)</a>
-        <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>"
-        data-confirm="Êtes-vous sûr de vouloir supprimer cette annonce ?">Suprimer l'annonce</a>
+        <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>">Suprimer l'annonce</a>
+        <a class="btn del-add" href="index.php?action=editAd&id=<?= $ad['idAd'] ?>">Editer l'annonce</a>
     </div>
 
     <br>
