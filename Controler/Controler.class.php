@@ -66,12 +66,7 @@
     }
 
     function userAdd($pseudo, $email, $pwd){
-        $user = UserModele::addUser($pseudo, $email, $pwd);
-        if(isset($user)){
-            return true;
-        }else{
-            throw new UserException("Erreur lors de la création de l'utilisateur");
-            return false;
-        }
+        $user =UserModele::addUser($pseudo, $email, $pwd);
+        return $user;
     }
     

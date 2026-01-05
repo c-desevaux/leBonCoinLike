@@ -1,6 +1,6 @@
 <?php
 
 
-    class UserException extends Exception {
+    class UserException extends PDOException {
         
     }
