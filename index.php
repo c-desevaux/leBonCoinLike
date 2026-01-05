@@ -22,6 +22,12 @@
                 userDetail($_GET['id']);
             }else if($_GET['action'] == 'detailAd'){
                 adDetail($_GET['id']);
+            }else if($_GET['action'] == 'account'){
+                accountPage();
+            }else if($_GET['action'] == 'validation'){
+                validation($_POST['pseudUser'], $_POST['emailUser'], $_POST['pwUser']);
+            }else if($_GET['action'] == 'login'){
+                loginPage();
             }else{
                 homePage();
             }

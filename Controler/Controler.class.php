@@ -7,6 +7,22 @@
         require 'Vue/vueHome.php';
     }
 
+    function accountPage(){
+        require 'Vue/vueAccountForm.php';
+    }
+
+    function validation($pseudo, $email, $pwd){
+        if(userAdd($pseudo, $email, $pwd)){
+            require 'Vue/vueAccountCreated.php';
+        }else{
+            require 'Vue/vueAccountForm.php';
+        }
+    }
+
+    function loginPage(){
+        require 'Vue/vueLogin.php';
+    }
+
     
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adList(){
@@ -47,5 +63,15 @@
     function userDelete(int $id){
         $user = UserModele::deleteUserById($id);
         userList();
+    }
+
+    function userAdd($pseudo, $email, $pwd){
+        $user = UserModele::addUser($pseudo, $email, $pwd);
+        if(isset($user)){
+            return true;
+        }else{
+            throw new UserException("Erreur lors de la création de l'utilisateur");
+            return false;
+        }
     }
     
