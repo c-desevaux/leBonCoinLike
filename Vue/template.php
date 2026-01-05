@@ -14,9 +14,23 @@
         <a class="btn nav-btn" href="index.php?action=adList">Annonces</a>
         <a class="btn nav-btn" href="index.php?action=userList">Utilisateurs</a>
     </nav>
+    <br>
     <div class="d-flex flex-column justify-content-center align-items-center pb-3" id='content'>
         <?= $content ?>
     </div>
+
+
+
+
+
+    <!-- Correction affichage fond input MacOS -->
+    <script>
+        document.querySelectorAll('input[type="text"], input[type="password"]').forEach(input => {
+            if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+                input.style.backgroundColor = '#fff'; // force le fond blanc
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
