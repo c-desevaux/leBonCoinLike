@@ -9,14 +9,20 @@
 
     
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
-    function adsList(){
+    function adList(){
         $ads  = AdModele::getAllAds();
-        require 'Vue/adsList.php';
+        require 'Vue/adList.php';
     }
 
     function adDetail(int $id){
         $ad = AdModele::getAdById($id);
+        $ad=$ad[0];
         require 'Vue/adDetail.php';
+    }
+
+    function adDelete(int $id){
+        $ad = AdModele::deleteAdById($id);
+        adList();
     }
 
 
@@ -29,11 +35,12 @@
 
     function userDetail(int $id){
         $user = UserModele::getUserById($id);
+        $user=$user[0];
         require 'Vue/userDetail.php';
     }
 
     function userDelete(int $id){
-        $users = UserModele::deleteUserById($id);
+        $user = UserModele::deleteUserById($id);
         userList();
     }
     

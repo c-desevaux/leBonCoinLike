@@ -60,5 +60,13 @@ VALUES
 
 
 
+INSERT INTO Ad (titleAd, txtAd, priceAd, idUser)
+VALUES
+('PS5',
+"Tres bon état disponible sur Evreux",
+420, 4)
+
+
+
 
 
