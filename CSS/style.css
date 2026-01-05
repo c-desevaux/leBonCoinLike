@@ -45,6 +45,16 @@ label{
     margin-bottom: 5px;
 }
 
+textarea{
+    resize: none;
+    height: 200px;
+    border-radius: 15px;
+    border: gray 0.5px solid;
+    width: 30vw;
+    padding: 5px;
+    padding-left: 10px;
+}
+
 .btn{
     background-color: #FF670A;
     font-weight: 500;
@@ -68,6 +78,10 @@ label{
     width: auto;
     padding: 10px 20px;
     border: none;
+}
+
+.edit{
+  border: gray 0.5px solid;
 }
 
 .log-title{

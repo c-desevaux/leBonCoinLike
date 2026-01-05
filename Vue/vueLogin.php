@@ -17,7 +17,7 @@
             <a class="mdp text-muted" href="#">Mot de passe oublié</a>
         </div>
     <br>
-        <button class="btn btn-title w-100 align-middle" id="btn-submit-account" type="submit">Connexion</button>
+        <button class="btn btn-title w-100" id="btn-submit-account" type="submit">Connexion</button>
     </form>
 </div>
 <?php $content = ob_get_clean(); ?>

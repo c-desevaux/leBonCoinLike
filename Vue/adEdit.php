@@ -1,0 +1,33 @@
+
+<?php $title="Edit Ad"; ?>
+
+<?php ob_start(); ?>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h1><?= $ad['titleAd'] ?></h1>
+
+    <form class="form d-flex flex-column justify-content-center align-items-left" method="POST" action="index.php?action=editAdValidation">
+        <div class="d-flex flex-column">
+            <label for="title">Titre</label>
+            <input class="edit" id="title" name="titleAd" value="<?= $ad['titleAd'] ?>">
+        </div>
+        <br>
+        <div class="d-flex flex-column">
+            <label for="description">Descriptif</label>
+            <textarea id="description" name="txtAd"><?= $ad['txtAd'] ?></textarea>
+        </div>
+        <br>
+        <div class="d-flex flex-column">
+            <label for="price">Prix</label>
+            <input class="edit" id="price" name="priceAd" value="<?= $ad['priceAd'] ?>">
+        </div>
+        <label for="idAd"></label>
+        <input type="hidden" name="idAd" value="<?= $ad['idAd'] ?>">
+        <br>
+        <button class="btn del" type="submit">Valider</button>
+    </form>
+</div>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require 'template.php' ?>

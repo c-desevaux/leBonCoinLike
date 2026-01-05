@@ -41,6 +41,17 @@
         require 'Vue/adDetail.php';
     }
 
+    function editAd(int $id){
+        $ad = AdModele::getAdById($id);
+        $ad=$ad[0];
+        require 'Vue/adEdit.php';
+    }
+
+    function editAdValidation(int $id, string $title, string $txt, float $price){
+       $ad = AdModele::updateAd($id, $title, $txt, $price);
+        adDetail($id);
+    }
+
     function adDelete(int $id){
         $ad = AdModele::deleteAdById($id);
         adList();
