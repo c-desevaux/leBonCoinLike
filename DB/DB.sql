@@ -38,14 +38,14 @@ CREATE TABLE Picture(
 
 INSERT INTO User_ (pseudUser, emailUser, dateUser, pwUser)
 VALUES
-('Bernard', 'bernard@example.com', '2025-12-23 10:00:00', 'azerty123'),
-('Bob', 'bob@example.com', '2025-12-22 14:30:00', 'wvcxnvb654'),
-('Charlie', 'charlie@example.com', '2025-12-20 09:15:00', 'lmkjgh789'),
-('Julie', 'julie@example.com', '2025-12-21 18:45:00', 'qsdgfgh852');
+('Bernard', 'bernard@example.com', '2025-12-23 10:00:00', 'Azerty123**'),
+('Bob', 'bob@example.com', '2025-12-22 14:30:00', 'Wvcxnvb654++'),
+('Charlie', 'charlie@example.com', '2025-12-20 09:15:00', 'Lmkjgh789**'),
+('Julie', 'julie@example.com', '2025-12-21 18:45:00', 'Qsdgfgh852**');
 
-INSERT INTO User_ (pseudUser, emailUser, dateUser, pwUser)
+INSERT INTO User_ (pseudUser, emailUser, pwUser)
 VALUES
-('Marie', 'marie@example.com', '2025-12-21 18:49:00', 'fdsfdsq564645');
+('Marie', 'marie27@example.com', 'Fdsfdsq564645**');
 
 
 ------Annonces-------
@@ -57,6 +57,14 @@ VALUES
 "Solide et agile vélo de Ville parmi plusieurs - 7 vitesses - Il conviendra à des personnes jusqu'à 175 cm.",
 '2025-12-25 18:45:00',
 320, 2)
+
+
+
+INSERT INTO Ad (titleAd, txtAd, priceAd, idUser)
+VALUES
+('PS5',
+"Tres bon état disponible sur Evreux",
+420, 4)
 
 
 

@@ -44,18 +44,20 @@
 
             try{
                 $user = new User($pseudo, $email, $pwd);
-
                 $sql = "INSERT INTO User_ (pseudUser, emailUser, pwUser)
                 VALUES (:pseudo, :email, :pwd)";
                 $request = $connexion->prepare($sql);
                 $request->execute(['pseudo' => $user->getPseudo(),
                                     'email' => $user->getEmail(),
                                     'pwd' => $user->getPwd()]);
-
                 $request->closeCursor();
                 $user->setId($connexion->lastInsertId());       //On rajoute l'id a l'objet user creer apres l'insert
                 $user->setDateCreation((UserModele::getUserById($user->getId()))[0]['dateUser']);
-            }catch(UserException $e){
+                return $user;
+            }catch(PDOException $e){
+                if(isset($e->errorInfo[1]) && $e->errorInfo[1] == 1062){
+                    throw new UserException("Email déjà existant");
+                }
                 die("Err: ".$e->getMessage());
             }
             

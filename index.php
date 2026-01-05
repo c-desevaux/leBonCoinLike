@@ -11,11 +11,23 @@
             if($_GET['action'] == 'userList'){
                 userList();
             }else if($_GET['action'] == 'adList'){
-                adsList();
+                adList();
+            }else if($_GET['action'] == 'adListByUser'){
+                adListByUser($_GET['idUser']);
             }else if($_GET['action'] == 'delUser'){
                 userDelete($_GET['id']);
+            }else if($_GET['action'] == 'delAd'){
+                adDelete($_GET['id']);
             }else if($_GET['action'] == 'detailUser'){
                 userDetail($_GET['id']);
+            }else if($_GET['action'] == 'detailAd'){
+                adDetail($_GET['id']);
+            }else if($_GET['action'] == 'account'){
+                accountPage();
+            }else if($_GET['action'] == 'validation'){
+                validation($_POST['pseudUser'], $_POST['emailUser'], $_POST['pwUser']);
+            }else if($_GET['action'] == 'login'){
+                loginPage();
             }else{
                 homePage();
             }

@@ -11,6 +11,40 @@ h1{
     justify-content: center;
 }
 
+input{
+    border-radius: 15px;
+    height: 45px;
+    padding-left: 15px;
+    border: rgb(174, 174, 174) 0.5px solid;
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    -webkit-appearance: none; /* désactive le style natif */
+    appearance: none;
+    background-color: #fff;   /* ton fond blanc ou transparent */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 15px;
+    height: 45px;
+}
+
+/* Hack pour autofill / style natif Mac */
+input:-webkit-autofill,
+input:-internal-autofill-selected {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset !important; /* remplace le bleu */
+    -webkit-text-fill-color: #000 !important;
+}
+
+
+label{
+    margin-bottom: 5px;
+}
+
 .btn{
     background-color: #FF670A;
     font-weight: 500;
@@ -25,9 +59,34 @@ h1{
 .btn:hover{
     background-color: #fda56f;
 }
-
+.btn-title{
+    height: 45px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
 .back{
     width: auto;
     padding: 10px 20px;
-    
+    border: none;
+}
+
+.log-title{
+    font-size: 1.5em;
+    font-weight:600;
+    text-align: left;
+  
+}
+
+.login-form{
+    max-width: 500px;
+}
+
+.mdp{
+    font-size: 0.6em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.home{
+    height: 40px;
 }
