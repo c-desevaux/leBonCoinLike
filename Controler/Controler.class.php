@@ -14,6 +14,11 @@
         require 'Vue/adList.php';
     }
 
+    function adListByUser($userId){
+        $ads =AdModele::getAdByUserId($userId);
+        require 'Vue/adList.php';
+    }
+
     function adDetail(int $id){
         $ad = AdModele::getAdById($id);
         $ad=$ad[0];

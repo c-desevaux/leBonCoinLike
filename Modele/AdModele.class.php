@@ -23,6 +23,10 @@
                 return parent::getLike(self::$tableName, "titleAd", $title);
             }
 
+            public static function getAdByUserId(int $userId){
+                return parent::getBy(self::$tableName, 'idUser', $userId);
+            }
+
 
 //---------------------------------------------DELETE FUNCTIONS------------------------------------------------
 

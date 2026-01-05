@@ -12,10 +12,10 @@
     <a class="btn del" href="index.php?action=detailAd&id=<?= $ad['idAd'] ?>">Voir annonce</a>
     <a class="btn del" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>">Suprimer annonce</a>
     <br>
-    
-<?php endforeach; else:?>
+
+<?php endforeach; else: ?>
     <div>Aucune annonce disponible</div>
-<?php endif;?>
+<?php endif; ?>
 
 <a class="btn back" href="index.php?action=home">Retour</a>
 

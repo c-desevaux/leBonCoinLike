@@ -12,9 +12,13 @@
 <div>Email de l'utilisateur: <?= $user['emailUser'] ?></div>
 <div>Date d'inscription de l'utilisateur: <?= $user['dateUser'] ?></div>
 <div>Identifiant de l'utilisateur: <?= $user['idUser'] ?></div>
-<a class="btn del" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
+<div>
+    <a class="btn del" href="index.php?action=adListByUser&idUser=<?=$user['idUser']?>">Toutes les annonces de <?= $user['pseudUser'] ?></a>
+    <a class="btn del" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
+</div>
+
 <br>
-<a class="btn back" href="index.php?action=userList">Retour</a>
+<a class="btn back" href="index.php?action=adListByUser&idUser=<?= $user['idUser'] ?>">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 
