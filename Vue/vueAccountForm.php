@@ -26,4 +26,10 @@
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require 'template.php' ?>
+<?php
+        if(isLogged()){
+                require 'Vue/templateLogin.php';
+        }else{
+                require 'Vue/templateLogout.php';
+        };
+?>

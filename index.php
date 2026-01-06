@@ -1,10 +1,12 @@
 <?php
-
+    
     require_once 'DB/LBCL.php';
     require_once 'Modele/Modele.class.php';
     require_once 'Modele/AdModele.class.php';
     require_once 'Modele/UserModele.class.php';
     require_once 'Controler/Controler.class.php';
+
+    session_start();
 
     try{
         if(isset($_GET['action'])){
@@ -34,6 +36,8 @@
                 loginPage();
             }else if($_GET['action'] == 'connexion'){
                 connexion($_POST['emailUser'], $_POST['pwUser']);
+            }else if($_GET['action'] == 'logout'){
+                logout();
             }else{
                 homePage();
             }

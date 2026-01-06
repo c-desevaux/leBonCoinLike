@@ -31,9 +31,10 @@
                 return parent::getBy(self::$tableName, 'idUser', $userId);
             }
 
-            
+            public static function getNbAdByUser(int $userId){
+                return parent::getCount('idUser', self::$tableName, $userId);
+            }
 
-           
 
 
 //---------------------------------------------DELETE FUNCTIONS------------------------------------------------

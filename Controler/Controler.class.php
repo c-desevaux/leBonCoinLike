@@ -7,6 +7,14 @@
         require 'Vue/vueHome.php';
     }
 
+    function isLogged(){
+        if(isset($_SESSION) && isset($_SESSION['login']) && $_SESSION['login']){
+                return true;
+        }else{
+                return false;
+        }
+    }
+
     function accountPage(){
         require 'Vue/vueAccountForm.php';
     }
@@ -20,17 +28,31 @@
     }
 
     function loginPage(){
+        $msg="";
         require 'Vue/vueLogin.php';
     }
 
     function connexion($email, $pwd){
         $user = UserModele::getUserByEmail($email);
-        $user=$user[0];
         if(isset($user)){
+            $user=$user[0];
             if($user['pwUser'] == $pwd){
-                echo "connexion reussi !";
+                $_SESSION['login']=$email;
+                require 'Vue/loginSuccess.php';
+            }else{
+                $msg="identifiant ou mot de passe incorrect";
+                require 'Vue/vueLogin.php';
             }
-        }
+        }else{
+                $msg="identifiant ou mot de passe incorrect";
+                require 'Vue/vueLogin.php';
+            }
+    }
+
+    function logout(){
+        $_SESSION['login']="";
+        $msg="Connectez vous à un autre compte";
+        require 'Vue/vueLogin.php';
     }
 
     
@@ -78,6 +100,8 @@
     function userDetail(int $id){
         $user = UserModele::getUserById($id);
         $user=$user[0];
+        $count = AdModele::getNbAdByUser($id);
+        $count=$count[0];
         require 'Vue/userDetail.php';
     }
 

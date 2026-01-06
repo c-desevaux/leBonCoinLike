@@ -13,6 +13,8 @@
         <a class="btn nav-btn" href="index.php?action=home">Accueil</a>
         <a class="btn nav-btn" href="index.php?action=adList">Annonces</a>
         <a class="btn nav-btn" href="index.php?action=userList">Utilisateurs</a>
+        <a class="btn nav-btn" href="index.php?action=logout">Se déconnecter</a>
+        
     </nav>
     <br>
     <div class="d-flex flex-column justify-content-center align-items-center pb-3" id='content'>
@@ -20,7 +22,7 @@
     </div>
 
 
-
+    <?= print_r($_SESSION) ?>
 
 
     <!-- Correction affichage fond input MacOS -->

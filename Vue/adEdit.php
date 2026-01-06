@@ -21,7 +21,6 @@
             <label for="price">Prix</label>
             <input class="edit" id="price" name="priceAd" value="<?= $ad['priceAd'] ?>">
         </div>
-        <label for="idAd"></label>
         <input type="hidden" name="idAd" value="<?= $ad['idAd'] ?>">
         <br>
         <button class="btn del" type="submit">Valider</button>
@@ -30,4 +29,10 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require 'template.php' ?>
+<?php
+        if(isLogged()){
+                require 'Vue/templateLogin.php';
+        }else{
+                require 'Vue/templateLogout.php';
+        };
+?>

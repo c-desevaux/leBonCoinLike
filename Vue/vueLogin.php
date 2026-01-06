@@ -16,10 +16,17 @@
             <input id="pwd" name="pwUser" type="password" placeholder="********" required>
             <a class="mdp text-muted" href="#">Mot de passe oublié</a>
         </div>
+        <div><?= $msg ?></div>
     <br>
         <button class="btn btn-title w-100" id="btn-submit-account" type="submit">Connexion</button>
     </form>
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require 'template.php' ?>
+<?php
+        if(isLogged()){
+                require 'Vue/templateLogin.php';
+        }else{
+                require 'Vue/templateLogout.php';
+        };
+?>
