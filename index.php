@@ -32,6 +32,8 @@
                 validation($_POST['pseudUser'], $_POST['emailUser'], $_POST['pwUser']);
             }else if($_GET['action'] == 'login'){
                 loginPage();
+            }else if($_GET['action'] == 'connexion'){
+                connexion($_POST['emailUser'], $_POST['pwUser']);
             }else{
                 homePage();
             }

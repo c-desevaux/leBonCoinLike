@@ -23,6 +23,16 @@
         require 'Vue/vueLogin.php';
     }
 
+    function connexion($email, $pwd){
+        $user = UserModele::getUserByEmail($email);
+        $user=$user[0];
+        if(isset($user)){
+            if($user['pwUser'] == $pwd){
+                echo "connexion reussi !";
+            }
+        }
+    }
+
     
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adList(){
@@ -31,7 +41,7 @@
     }
 
     function adListByUser($userId){
-        $ads =AdModele::getAdByUserId($userId);
+        $ads = AdModele::getAdByUserId($userId);
         require 'Vue/adList.php';
     }
 
