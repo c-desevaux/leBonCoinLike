@@ -110,8 +110,8 @@
         require 'Vue/adEdit.php';
     }
 
-    function editAdValidation(int $id, string $title, string $txt, float $price){
-       $ad = AdModele::updateAd($id, $title, $txt, $price);
+    function editAdValidation(int $id, string $title, string $txt, float $price, int $idUser){
+       $ad = AdModele::updateAd($id, $title, $txt, $price, $idUser);
         adDetail($id);
     }
 
@@ -142,6 +142,17 @@
         }
         $user = UserModele::deleteUserById($id);
         userList();
+    }
+
+    function editUser(int $id){
+        $user = UserModele::getUserById($id);
+        $user = $user[0];
+        require 'Vue/userEdit.php';
+    }
+
+    function editUserValidation(int $idUser, string $pseudUser, string $emailUser, string $pwUser){
+        $user = UserModele::updateUser($idUser, $pseudUser, $emailUser, $pwUser);
+        userDetail($idUser);
     }
 
     function userAdd($pseudo, $email, $pwd){

@@ -2,7 +2,6 @@
 <?php $title=$user['pseudUser']; ?>
 
 
-
 <?php ob_start(); ?>
 
     <h1><?= $title ?></h1>
@@ -16,12 +15,21 @@
     <div>
         
     <?php if(isLogged() && $user['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']):?>
+        
+        <div class="d-flex">
+            <form method="POST" action="index.php?action=editUser">
+                <input type="hidden" name="idUser" value="<?= $user['idUser'] ?>">
+                <button class="btn del-user" type="submit">Modifier mon compte</button>
+            </form>
+            
+            <form method="POST" action="index.php?action=delete">
+                <input type="hidden" name="id" value=<?= $user['idUser'] ?>>
+                <input type="hidden" name="toDelete" value="User">
+                <button class="btn del-add" type="submit">Suprimer mon compte</button>
+            </form>
+        </div>
+        
         <a class="btn del" href="index.php?action=adListByUser&idUser=<?=$user['idUser']?>">Toutes mes annonces</a>
-        <form method="POST" action="index.php?action=delete">
-            <input type="hidden" name="id" value=<?= $user['idUser'] ?>>
-            <input type="hidden" name="toDelete" value="User">
-            <button class="btn del-add" type="submit">Suprimer mon compte</button>
-        </form>
         <a class="btn del-user" href="index.php?action=newAd">Publier une annonce</a>
     <?php else:?>
         <a class="btn del" href="index.php?action=adListByUser&idUser=<?=$user['idUser']?>">Toutes les annonces de <?= $user['pseudUser'] ?></a>

@@ -29,6 +29,34 @@
             return parent::getLike(self::$tableName,"pseudUser",$pseudo);
         }
 
+    //-------------------------------FUNCTION GET THAT RETURNS AN OBJECT SO WE CAN USE ITS PROPERTIES TO UPDATE--------------------------------
+
+            public static function getUserByIdClass(string $table, string $column, int $idUser, string $pseudUser, string $emailUser, string $pwUser){
+
+                $connexion = DbLBCL::getConnexion();            //start connexion
+
+                try{
+
+                    if(DbLBCL::checkTables($table)){
+                        $sql = "SELECT * FROM ".$table." WHERE ".$column."=?";
+                        $request = $connexion->prepare($sql);         
+                        $request->execute([$idUser]);
+                        $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::class, [$pseudUser, $emailUser, $pwUser]);
+                        $record = $request->fetch();
+                        $request->closeCursor();
+                        if($record){
+                            return $record;
+                        }
+                    }else{
+                        throw new ModeleException("La table ciblée n'existe pas");
+                    }
+                    
+                }catch(ModeleException $e){
+                    die('Err: '.$e->getMessage());
+                }
+
+            }
+
         
 
 
@@ -71,5 +99,33 @@
             }
             
         }
+
+    //-----------------------------------------UPDATE FUNCTIONS-----------------------------------------
+
+            public static function updateUser(int $idUser, string $pseudUser, string $emailUser, string $pwUser){
+
+                $connexion = DbLBCL::getConnexion();
+
+                //Rajouter les controles que l'on a dans la class
+
+                $user=self::getUserByIdClass(self::$tableName, self::$idName, $idUser, $pseudUser, $emailUser, $pwUser); //On peut recuprer l'objet comme ça mais c'est un faux objet    
+
+                $user->setPseudo($pseudUser);
+                
+                try{
+
+                    $sql = "UPDATE user_
+                    SET pseudUser = :pseudo
+                        WHERE idUser = :idUser";
+                    $request = $connexion->prepare($sql);
+                    $request->execute(['pseudo' => $user->getPseudo(),
+                                        'idUser' => $idUser]);
+                    $request->closeCursor();
+
+                }catch(PDOException $e){
+                    die("Err: ".$e->getMessage());
+                }
+                    
+            }
         
     }

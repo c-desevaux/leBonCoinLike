@@ -9,7 +9,6 @@
     <a class="btn del-user" href="index.php?action=newAd">Publier une annonce</a>
 <?php else: ?>
     <a class="btn home d-flex justify-content-center align-items-center" href="index.php?action=account">Créer un compte</a>
-    <a class="btn home d-flex justify-content-center align-items-center" href="index.php?action=login">Se connecter</a>
 <?php endif;?>
 
 

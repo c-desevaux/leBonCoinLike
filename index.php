@@ -20,6 +20,10 @@
                 deleteConfirm($_POST['toDelete'], $_POST['id']);
             }else if($_GET['action'] == 'delUser'){
                 userDelete($_POST['id']);
+            }else if($_GET['action'] == 'editUser'){
+                editUser($_POST['idUser']);
+            }else if($_GET['action'] == 'editUserValidation'){
+                editUserValidation($_POST['idUser'], $_POST['pseudUser'], $_POST['emailUser'],$_POST['pwUser']);
             }else if($_GET['action'] == 'delAd'){
                 adDelete($_POST['id']);
             }else if($_GET['action'] == 'newAd'){
@@ -29,7 +33,7 @@
             }else if($_GET['action'] == 'editAd'){
                 editAd($_GET['id']);
             }else if($_GET['action'] == 'editAdValidation'){
-                editAdValidation($_POST['idAd'], $_POST['titleAd'], $_POST['txtAd'], $_POST['priceAd']);
+                editAdValidation($_POST['idAd'], $_POST['titleAd'], $_POST['txtAd'], $_POST['priceAd'], UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']);
             }else if($_GET['action'] == 'detailUser'){
                 userDetail($_GET['id']);
             }else if($_GET['action'] == 'selfUser'){
