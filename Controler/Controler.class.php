@@ -110,8 +110,8 @@
         require 'Vue/adEdit.php';
     }
 
-    function editAdValidation(int $id, string $title, string $txt, float $price){
-       $ad = AdModele::updateAd($id, $title, $txt, $price);
+    function editAdValidation(int $id, string $title, string $txt, float $price, int $idUser){
+       $ad = AdModele::updateAd($id, $title, $txt, $price, $idUser);
         adDetail($id);
     }
 
