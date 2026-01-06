@@ -117,7 +117,7 @@
 
                 try{
 
-                    $sql = "UPDATE ad 
+                    $sql = "UPDATE ad
                     SET titleAd = :title,
                         txtAd = :txt,
                         priceAd = :price

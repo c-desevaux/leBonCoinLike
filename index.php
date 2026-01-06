@@ -20,6 +20,10 @@
                 deleteConfirm($_POST['toDelete'], $_POST['id']);
             }else if($_GET['action'] == 'delUser'){
                 userDelete($_POST['id']);
+            }else if($_GET['action'] == 'editUser'){
+                editUser($_POST['idUser']);
+            }else if($_GET['action'] == 'editUserValidation'){
+                editUserValidation($_POST['idUser'], $_POST['pseudUser'], $_POST['emailUser'],$_POST['pwUser']);
             }else if($_GET['action'] == 'delAd'){
                 adDelete($_POST['id']);
             }else if($_GET['action'] == 'newAd'){

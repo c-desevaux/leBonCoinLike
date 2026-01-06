@@ -144,6 +144,17 @@
         userList();
     }
 
+    function editUser(int $id){
+        $user = UserModele::getUserById($id);
+        $user = $user[0];
+        require 'Vue/userEdit.php';
+    }
+
+    function editUserValidation(int $idUser, string $pseudUser, string $emailUser, string $pwUser){
+        $user = UserModele::updateUser($idUser, $pseudUser, $emailUser, $pwUser);
+        userDetail($idUser);
+    }
+
     function userAdd($pseudo, $email, $pwd){
         $user =UserModele::addUser($pseudo, $email, $pwd);
         return $user;
