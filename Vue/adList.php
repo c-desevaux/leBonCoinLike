@@ -12,12 +12,14 @@
     <a class="btn del" href="index.php?action=detailAd&id=<?= $ad['idAd'] ?>">Voir annonce</a>
 
     <?php if(isLogged() && $ad['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']):?>
-        <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>">Suprimer annonce</a>;
+        <form method="POST" action="index.php?action=delete">
+            <input type="hidden" name="id" value=<?= $ad['idAd'] ?>>
+            <input type="hidden" name="toDelete" value="Ad">
+            <button class="btn del-add">Suprimer annonce</button>
+        </form>
+        
     <?php endif;?> 
-    
-    
     <br>
-
 <?php endforeach; else: ?>
     <div>Aucune annonce disponible</div>
 <?php endif; ?>

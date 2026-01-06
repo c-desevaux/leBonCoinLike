@@ -29,11 +29,16 @@
             return parent::getLike(self::$tableName,"pseudUser",$pseudo);
         }
 
+        
+
 
 //-------------------------------------------DELETE FUNCTIONS------------------------------------------------  
 
         public static function deleteUserById(int $id): void{
             parent::delete(self::$tableName, self::$idName , $id);
+            if($id == $_SESSION['login']){
+                $_SESSION['login']="";
+            }
         }
 
         public static function deleteUserByName(string $name):void{

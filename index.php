@@ -10,16 +10,19 @@
 
     try{
         if(isset($_GET['action'])){
-            if($_GET['action'] == 'userList'){
+            if($_GET['action'] == 'listUser'){
                 userList();
-            }else if($_GET['action'] == 'adList'){
+            }else if($_GET['action'] == 'listAd'){
                 adList();
             }else if($_GET['action'] == 'adListByUser'){
                 adListByUser($_GET['idUser']);
+            }else if($_GET['action'] == 'delete'){
+                print_r($_POST);
+                deleteConfirm($_POST['toDelete'], $_POST['id']);
             }else if($_GET['action'] == 'delUser'){
-                userDelete($_GET['id']);
+                userDelete($_POST['id']);
             }else if($_GET['action'] == 'delAd'){
-                adDelete($_GET['id']);
+                adDelete($_POST['id']);
             }else if($_GET['action'] == 'editAd'){
                 editAd($_GET['id']);
             }else if($_GET['action'] == 'editAdValidation'){

@@ -55,6 +55,20 @@
         require 'Vue/vueLogin.php';
     }
 
+    function deleteConfirm($toDelete, $id){
+        if($toDelete == "Ad"){
+            $x=AdModele::getAdById($id);
+            $x=$x[0];
+            $name=$x['titleAd'];
+        }else if($toDelete == "User"){
+            $x=UserModele::getUserById($id);
+            $x=$x[0];
+            $name=$x['pseudUser'];
+        }
+        
+        require 'Vue/deleteConfirm.php';
+    }
+
     
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adList(){
@@ -70,6 +84,8 @@
     function adDetail(int $id){
         $ad = AdModele::getAdById($id);
         $ad=$ad[0];
+        $user = UserModele::getUserById($ad['idUser']);
+        $user = $user[0];
         require 'Vue/adDetail.php';
     }
 
