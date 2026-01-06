@@ -22,7 +22,7 @@
             <input type="hidden" name="toDelete" value="User">
             <button class="btn del-add" type="submit">Suprimer mon compte</button>
         </form>
-        <a class="btn del-user" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Publier une annonce</a>
+        <a class="btn del-user" href="index.php?action=newAd">Publier une annonce</a>
     <?php else:?>
         <a class="btn del" href="index.php?action=adListByUser&idUser=<?=$user['idUser']?>">Toutes les annonces de <?= $user['pseudUser'] ?></a>
     <?php endif;?>

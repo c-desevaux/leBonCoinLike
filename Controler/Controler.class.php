@@ -89,6 +89,19 @@
         require 'Vue/adDetail.php';
     }
 
+    function newAd(){
+        require 'Vue/adCreation.php';
+    }
+
+    function addAd(string $title, string $desc, float $price, int $userId){
+        $ad = AdModele::addAd($title, $desc, $price, $userId);
+        $ad = AdModele::getAdById($ad->getId());
+        $ad = $ad[0];
+        $user = UserModele::getUserById($userId);
+        $user=$user[0];
+        require 'Vue/adDetail.php';
+    }
+
     function editAd(int $id){
         $ad = AdModele::getAdById($id);
         $ad=$ad[0];

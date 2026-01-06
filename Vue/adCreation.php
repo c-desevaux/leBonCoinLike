@@ -1,0 +1,38 @@
+
+<?php $title="Ad Creation"; ?>
+
+<?php ob_start(); ?>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h1>Votre annonce</h1>
+
+    <form class="form d-flex flex-column justify-content-center align-items-left" method="POST" action="index.php?action=addAd">
+        <div class="d-flex flex-column">
+            <label for="title">Titre</label>
+            <input class="edit" id="title" name="titleAd">
+        </div>
+        <br>
+        <div class="d-flex flex-column">
+            <label for="description">Descriptif</label>
+            <textarea id="description" name="txtAd"></textarea>
+        </div>
+        <br>
+        <div class="d-flex flex-column">
+            <label for="price">Prix</label>
+            <input class="edit" id="price" name="priceAd">
+        </div>
+        <input type="hidden" name="idUser" value="<?= UserModele::getUserByEmail($_SESSION['login'])[0]['idUser'] ?>">
+        <br>
+        <button class="btn del" type="submit">Valider</button>
+    </form>
+</div>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php
+        if(isLogged()){
+                require 'Vue/templateLogin.php';
+        }else{
+                require 'Vue/templateLogout.php';
+        };
+?>
