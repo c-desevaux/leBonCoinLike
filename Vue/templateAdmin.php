@@ -12,8 +12,8 @@
     <nav class="d-flex justify-content-center align-items-center gap-3 p-3" id="nav-bar">
         <a class="btn nav-btn" href="index.php?action=home">Accueil</a>
         <a class="btn nav-btn" href="index.php?action=adList">Annonces</a>
-        <a class="btn nav-btn" href="index.php?action=selfUser">Mon profil</a>
-        <a class="btn nav-btn" href="index.php?action=logout">Se déconnecter</a>
+        <a class="btn nav-btn" href="index.php?action=userList">Utilisateurs</a>
+        <a class="btn nav-btn" href="index.php?action=login">Se connecter</a>
         
     </nav>
     <br>
@@ -22,7 +22,7 @@
     </div>
 
 
-   
+    
 
 
     <!-- Correction affichage fond input MacOS -->

@@ -15,8 +15,12 @@
     <div>Identifiant de l'auteur de l'annonce: <?=  $ad['idUser']?></div>
     <div>
         <a class="btn del" href="index.php?action=detailUser&id=<?=  $ad['idUser']?>">Voir le profil de l'annonceur(e)</a>
-        <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>">Suprimer l'annonce</a>
-        <a class="btn del-add" href="index.php?action=editAd&id=<?= $ad['idAd'] ?>">Editer l'annonce</a>
+       
+        <?php if(isLogged() && $ad['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']):?>
+            <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>">Suprimer l'annonce</a>
+            <a class="btn del-add" href="index.php?action=editAd&id=<?= $ad['idAd'] ?>">Editer l'annonce</a>
+        <?php endif;?> 
+        
     </div>
 
     <br>

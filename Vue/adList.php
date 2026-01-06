@@ -10,8 +10,12 @@
     <div><?= $ad['titleAd'] ?></div>
     <div><?= $ad['priceAd'] ?>€</div>
     <a class="btn del" href="index.php?action=detailAd&id=<?= $ad['idAd'] ?>">Voir annonce</a>
-    <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>"
-    data-confirm="Êtes-vous sûr de vouloir supprimer cette annonce ?">Suprimer annonce</a>
+
+    <?php if(isLogged() && $ad['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']):?>
+        <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>">Suprimer annonce</a>;
+    <?php endif;?> 
+    
+    
     <br>
 
 <?php endforeach; else: ?>

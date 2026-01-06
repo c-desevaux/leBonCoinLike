@@ -26,6 +26,8 @@
                 editAdValidation($_POST['idAd'], $_POST['titleAd'], $_POST['txtAd'], $_POST['priceAd']);
             }else if($_GET['action'] == 'detailUser'){
                 userDetail($_GET['id']);
+            }else if($_GET['action'] == 'selfUser'){
+                userDetail(UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']);
             }else if($_GET['action'] == 'detailAd'){
                 adDetail($_GET['id']);
             }else if($_GET['action'] == 'account'){
