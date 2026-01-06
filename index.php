@@ -17,7 +17,6 @@
             }else if($_GET['action'] == 'adListByUser'){
                 adListByUser($_GET['idUser']);
             }else if($_GET['action'] == 'delete'){
-                print_r($_POST);
                 deleteConfirm($_POST['toDelete'], $_POST['id']);
             }else if($_GET['action'] == 'delUser'){
                 userDelete($_POST['id']);

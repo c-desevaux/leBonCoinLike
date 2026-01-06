@@ -20,7 +20,8 @@
     }
 
     function validation($pseudo, $email, $pwd){
-        if(userAdd($pseudo, $email, $pwd)){
+        $hash = password_hash($pwd, PASSWORD_BCRYPT);
+        if(userAdd($pseudo, $email, $hash)){
             require 'Vue/vueAccountCreated.php';
         }else{
             require 'Vue/vueAccountForm.php';
@@ -36,7 +37,8 @@
         $user = UserModele::getUserByEmail($email);
         if(isset($user)){
             $user=$user[0];
-            if($user['pwUser'] == $pwd){
+            
+            if(password_verify($pwd, $user['pwUser'])){
                 $_SESSION['login']=$email;
                 require 'Vue/loginSuccess.php';
             }else{
@@ -135,6 +137,9 @@
     }
 
     function userDelete(int $id){
+        if(islogged() && $id == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']){
+            $_SESSION['login']="";
+        }
         $user = UserModele::deleteUserById($id);
         userList();
     }

@@ -7,7 +7,7 @@ CREATE TABLE User_(
    pseudUser VARCHAR(50)  NOT NULL,
    emailUser VARCHAR(50)  NOT NULL,
    dateUser DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   pwUser VARCHAR(50)  NOT NULL,
+   pwUser VARCHAR(255)  NOT NULL,
    PRIMARY KEY(idUser),
    UNIQUE(emailUser)
 );
