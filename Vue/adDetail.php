@@ -7,21 +7,34 @@
 
 
 
-    <div>Titre de l'annonce: <?= $ad['titleAd'] ?></div>
-    <div>Description de l'annonce: <?= $ad['txtAd'] ?></div>
-    <div>Date de création de l'annonce: <?= $ad['dateAd'] ?></div>
-    <div>Prix de l'annonce: <?= $ad['priceAd'] ?>€</div>
-    <div>Identifiant de l'annonce: <?= $ad['idAd']?></div>
-    <div>Identifiant de l'auteur de l'annonce: <?=  $ad['idUser']?></div>
+    <div><?= $ad['txtAd'] ?></div>
+    <div>Date: <?= $ad['dateAd'] ?></div>
+    <div>Prix: <?= $ad['priceAd'] ?>€</div>
+    <div>Annonce de: <?= $user['pseudUser']?></div>
+    <br>
     <div>
         <a class="btn del" href="index.php?action=detailUser&id=<?=  $ad['idUser']?>">Voir le profil de l'annonceur(e)</a>
-        <a class="btn del-add" href="index.php?action=delAd&id=<?= $ad['idAd'] ?>">Suprimer l'annonce</a>
-        <a class="btn del-add" href="index.php?action=editAd&id=<?= $ad['idAd'] ?>">Editer l'annonce</a>
+       
+        <?php if(isLogged() && $ad['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']):?>
+            <form method="POST" action="index.php?action=delete">
+                <input type="hidden" name="id" value=<?= $ad['idAd'] ?>>
+                <input type="hidden" name="toDelete" value="Ad">
+                <button class="btn del-add" type="submit">Suprimer l'annonce</button>
+            </form>
+            <a class="btn del-add" href="index.php?action=editAd&id=<?= $ad['idAd'] ?>">Editer l'annonce</a>
+        <?php endif;?> 
+        
     </div>
 
     <br>
-    <a class="btn back" href="index.php?action=adList">Retour</a>
+    <a class="btn back" href="index.php?action=listAd">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require 'template.php' ?>
+<?php
+        if(isLogged()){
+                require 'Vue/templateLogin.php';
+        }else{
+                require 'Vue/templateLogout.php';
+        };
+?>

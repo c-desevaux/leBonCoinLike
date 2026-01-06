@@ -31,9 +31,10 @@
                 return parent::getBy(self::$tableName, 'idUser', $userId);
             }
 
-            
+            public static function getNbAdByUser(int $userId){
+                return parent::getCount('idUser', self::$tableName, $userId);
+            }
 
-           
 
 
 //---------------------------------------------DELETE FUNCTIONS------------------------------------------------
@@ -65,6 +66,7 @@
                     //On rajoute l'id a l'objet ad creer apres l'insert
                     $ad->setId($connexion->lastInsertId());
                     $ad->setDateCreation((UserModele::getUserById($ad->getUserId()))[0]['dateUser']);
+                    return $ad;
                 }catch(PDOException $e){
                     die("Err: ".$e->getMessage());
                 }

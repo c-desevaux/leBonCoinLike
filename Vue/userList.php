@@ -9,7 +9,12 @@
 
         <div><?= $user['pseudUser'] ?></div>
         <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
-        <a class="btn del-user" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
+        
+        
+
+        <?php if(isLogged() && $_SESSION['login'] == "admin@admin.com"):?>
+            <a class="btn del-user" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
+        <?php endif;?> 
         <br>
 
     <?php endforeach; else: ?>
@@ -20,4 +25,10 @@
     <a class="btn back" href="index.php?action=home">Retour</a>
 <?php $content = ob_get_clean(); ?>
 
-<?php require 'template.php' ?>
+<?php
+        if(isLogged()){
+                require 'Vue/templateLogin.php';
+        }else{
+                require 'Vue/templateLogout.php';
+        };
+?>

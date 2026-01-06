@@ -62,8 +62,37 @@
                 }
 
             }
+//-----------------------------------Get a count from a specific table--------------------------------------------
+
+            public static function getCount(string $tableCounter, string $tableCounted, int $idCounter ){
+
+                $connexion = DbLBCL::getConnexion();            //start connexion
+
+                try{
+                    if(DbLBCL::checkTables($tableCounted)){
+                        $sql="SELECT COUNT(*)
+                        FROM ".$tableCounted."
+                        WHERE ".$tableCounter." =?";
+                        $request = $connexion->prepare($sql);
+                        $request->execute([$idCounter]);
+                        $record = $request->fetch();
+                        $request->closeCursor();
+                        if($record){
+                            return $record;
+                        }
+                    }else{
+                        throw new ModeleException("La table ciblée n'existe pas");
+                    }
+
+                }catch(ModeleException $e){
+                    die('Err: '.$e->getMessage());
+                }
+
+            }
+
 
 //-----------------------Get one or more record from a specific table choosing the column name----------------------
+
             public static function getByClass(string $table, string $column, string $value){
 
                 $connexion = DbLBCL::getConnexion();            //start connexion
