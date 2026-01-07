@@ -214,4 +214,8 @@
         $user =UserModele::addUser($pseudo, $email, $pwd);
         return $user;
     }
+
+
+
+    
     
