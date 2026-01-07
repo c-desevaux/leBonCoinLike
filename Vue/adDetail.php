@@ -26,7 +26,7 @@
     </div>
 
     <br>
-    <a class="btn back" href="index.php?action=listAd">Retour</a>
+    <a class="btn back">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -11,7 +11,7 @@
     <div><?= $ad['priceAd'] ?>€</div>
     <a class="btn del" href="index.php?action=detailAd&id=<?= $ad['idAd'] ?>">Voir annonce</a>
 
-    <?php if(isLogged() && $ad['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']):?>
+    <?php if(isLogged() && ($ad['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser'] || isAdmin())):?>
         <form method="POST" action="index.php?action=delete">
             <input type="hidden" name="id" value=<?= $ad['idAd'] ?>>
             <input type="hidden" name="toDelete" value="Ad">
@@ -24,7 +24,7 @@
     <div>Aucune annonce disponible</div>
 <?php endif; ?>
 
-<a class="btn back" href="index.php?action=home">Retour</a>
+<a class="btn back">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 

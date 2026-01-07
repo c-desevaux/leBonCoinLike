@@ -3,12 +3,16 @@
 
 <?php ob_start(); ?>
 
-<h1>Bienvenue sur le presque bon coin</h1>
 
-<?php if(isLogged()): ?>
-    <a class="btn del-user" href="index.php?action=newAd">Publier une annonce</a>
-<?php else: ?>
-    <a class="btn home d-flex justify-content-center align-items-center" href="index.php?action=account">Créer un compte</a>
+<?php if(!isAdmin()):?>
+    <h1>Bienvenue sur le presque bon coin</h1>
+    <?php if(isLogged()): ?>
+        <a class="btn del-user" href="index.php?action=newAd">Publier une annonce</a>
+    <?php else: ?>
+        <a class="btn home d-flex justify-content-center align-items-center" href="index.php?action=account">Créer un compte</a>
+    <?php endif;?>
+<?php else:?>
+    <h1>Compte administrateur root</h1>
 <?php endif;?>
 
 
