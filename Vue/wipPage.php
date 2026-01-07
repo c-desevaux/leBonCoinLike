@@ -2,8 +2,7 @@
 
 <?php ob_start(); ?>
 
-    <h1>Votre compte a bien été crée</h1>
-    <a class="btn del" href="index.php?action=login">Login</a>
+    <h1>Cette fonctionnalité arrive bientot :)</h1>
 
 <?php $content = ob_get_clean(); ?>
 

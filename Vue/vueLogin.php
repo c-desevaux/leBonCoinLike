@@ -14,7 +14,7 @@
         <div class="d-flex flex-column w-100">
             <label for="pwd">Votre mot de passe</label>
             <input id="pwd" name="pwUser" type="password" placeholder="********" required>
-            <a class="mdp text-muted" href="#">Mot de passe oublié</a>
+            <a class="mdp text-muted" href="index.php?action=wip">Mot de passe oublié</a>
         </div>
         <div><?= $msg ?></div>
     <br>
@@ -25,7 +25,11 @@
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };

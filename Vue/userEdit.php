@@ -12,12 +12,15 @@
             <input type="hidden" name="idUser" value="<?= $user['idUser'] ?>">
             <input type="hidden" name="emailUser" value="<?= $user['emailUser'] ?>">
             <input type="hidden" name="pwUser" value="<?= $user['pwUser'] ?>">
+            <div class="d-flex justify-content-center"><?= $msg ?></div>
             <br>
             <div class="d-flex justify-content-center">
                 <button class="btn del" type="submit">Valider</button>
             </div>
             
         </form>
+
+        
 
 
 
@@ -27,7 +30,11 @@
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };

@@ -7,27 +7,34 @@
 
     <?php if($users):foreach ($users as $user): ?>
 
-        <div><?= $user['pseudUser'] ?></div>
-        <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
+        <?php if(!($user['emailUser'] == "admin@admin.com")):?>
+            <div><?= $user['pseudUser'] ?></div>
+            <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
+            <form method="POST" action="index.php?action=delete">
+                <input type="hidden" name="toDelete" value='User'>
+                <input type="hidden" name="id" value="<?= $user['idUser'] ?>">
+                <button class="btn del-user" type="submit">Suprimer</button>
+            </form>
+            
+            <br>
+        <?php endif;?>
         
-        
-
-        <?php if(isLogged() && $_SESSION['login'] == "admin@admin.com"):?>
-            <a class="btn del-user" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
-        <?php endif;?> 
-        <br>
 
     <?php endforeach; else: ?>
         <div>Aucun utilisateur disponible</div>
     <?php endif; ?>
 
 
-    <a class="btn back" href="index.php?action=home">Retour</a>
+    <a class="btn back">Retour</a>
 <?php $content = ob_get_clean(); ?>
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };

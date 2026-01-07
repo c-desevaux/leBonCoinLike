@@ -30,6 +30,14 @@ CREATE TABLE Picture(
    FOREIGN KEY(idAd) REFERENCES Ad(idAd) ON DELETE CASCADE
 );
 
+CREATE USER 'app_user'@'localhost'
+IDENTIFIED BY 'mdpUser';
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON lbcl.*
+TO 'app_user'@'localhost';
+
+
 
 ------------------------------------------- Jeu de donné -----------------------------------------------
 
@@ -67,6 +75,9 @@ VALUES
 420, 4)
 
 
+----------Compte admin---------
 
+
+id: admin@admin.com
 
 

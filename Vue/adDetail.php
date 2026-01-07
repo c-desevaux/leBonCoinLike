@@ -11,7 +11,6 @@
     <div>Date: <?= $ad['dateAd'] ?></div>
     <div>Prix: <?= $ad['priceAd'] ?>€</div>
     <div>Annonce de: <?= $user['pseudUser']?></div>
-    <br>
     <div>
         <a class="btn del" href="index.php?action=detailUser&id=<?=  $ad['idUser']?>">Voir le profil de l'annonceur(e)</a>
        
@@ -27,13 +26,17 @@
     </div>
 
     <br>
-    <a class="btn back" href="index.php?action=listAd">Retour</a>
+    <a class="btn back">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };

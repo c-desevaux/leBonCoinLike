@@ -22,16 +22,22 @@
             <input class="edit" id="price" name="priceAd" value="<?= $ad['priceAd'] ?>">
         </div>
         <input type="hidden" name="idAd" value="<?= $ad['idAd'] ?>">
+        <div class="d-flex justify-content-center"><?= $msg ?></div>
         <br>
         <button class="btn del" type="submit">Valider</button>
     </form>
+    
 </div>
 
 <?php $content = ob_get_clean(); ?>
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };

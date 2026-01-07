@@ -73,7 +73,7 @@
 
         public function setPwd($pwd):void {
 
-            if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/', $pwd)){
+            if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/u', $pwd)){
                 $this->pwUser = $pwd;
             }else{
                 throw new UserException("mot de passe trop faible");

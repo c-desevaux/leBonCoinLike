@@ -1,9 +1,8 @@
-<?php $title="Login";?>
+<?php $title="Error";?>
 
 <?php ob_start(); ?>
 
-    <h1>Votre compte a bien été crée</h1>
-    <a class="btn del" href="index.php?action=login">Login</a>
+    <h1>Cette page n'est pas accessible</h1>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -38,7 +38,7 @@
     </div>
 
     <br>
-    <a class="btn back" href="index.php?action=adListByUser&idUser=<?= $user['idUser'] ?>">Retour</a>
+    <a class="btn back">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 
@@ -46,7 +46,11 @@
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };
