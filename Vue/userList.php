@@ -10,7 +10,12 @@
         <?php if(!($user['emailUser'] == "admin@admin.com")):?>
             <div><?= $user['pseudUser'] ?></div>
             <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
-            <a class="btn del-user" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
+            <form method="POST" action="index.php?action=delete">
+                <input type="hidden" name="toDelete" value='User'>
+                <input type="hidden" name="id" value="<?= $user['idUser'] ?>">
+                <button class="btn del-user" type="submit">Suprimer</button>
+            </form>
+            
             <br>
         <?php endif;?>
         

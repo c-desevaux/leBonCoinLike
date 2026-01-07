@@ -15,6 +15,22 @@
         }
     }
 
+    function isAuthorised($id){
+        if(($id == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']) || ($_SESSION['login']=="admin@admin.com")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function isAdmin(){
+        if(isLogged() && $_SESSION['login']=="admin@admin.com"){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function accountPage(){
         require 'Vue/vueAccountForm.php';
     }
@@ -143,7 +159,7 @@
 
 //-------------------------------------------USER CONTROLERS----------------------------------------
     function userList(){
-        if(isLogged() && $_SESSION['login'] == "admin@admin.com"){
+        if(isAdmin()){
             $users = UserModele::getAllUsers();
             require 'Vue/userList.php';
         }else{
@@ -161,11 +177,16 @@
     }
 
     function userDelete(int $id){
+
         if(islogged() && $id == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']){
             $_SESSION['login']="";
+            $user = UserModele::deleteUserById($id);
+            homePage();
+        }else if(isAdmin()){
+            $user = UserModele::deleteUserById($id);
+            userList();
         }
-        $user = UserModele::deleteUserById($id);
-        homePage();
+        
     }
 
     function editUser(int $id){
