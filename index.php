@@ -50,6 +50,8 @@
                 connexion($_POST['emailUser'], $_POST['pwUser']);
             }else if($_GET['action'] == 'logout'){
                 logout();
+            }else if($_GET['action'] == 'wip'){
+                wipPage();
             }else{
                 homePage();
             }

@@ -1,34 +1,14 @@
 <?php
     require_once 'Modele/Modele.class.php';
 
-
+//--------------------------------------MAIN PAGES CONTROLLER-------------------------------
 
     function homePage(){
         require 'Vue/vueHome.php';
     }
 
-    function isLogged(){
-        if(isset($_SESSION) && isset($_SESSION['login']) && $_SESSION['login']){
-                return true;
-        }else{
-                return false;
-        }
-    }
-
-    function isAuthorised($id){
-        if(($id == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']) || ($_SESSION['login']=="admin@admin.com")){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    function isAdmin(){
-        if(isLogged() && $_SESSION['login']=="admin@admin.com"){
-            return true;
-        }else{
-            return false;
-        }
+    function wipPage(){
+        require 'Vue/wipPage.php';
     }
 
     function accountPage(){
@@ -85,6 +65,32 @@
         }
         
         require 'Vue/deleteConfirm.php';
+    }
+
+    //----------------------------BOOLEAN CONNEXION AND AUTHORISATION------------------------
+
+    function isLogged(){
+        if(isset($_SESSION) && isset($_SESSION['login']) && $_SESSION['login']){
+                return true;
+        }else{
+                return false;
+        }
+    }
+
+    function isAuthorised($id){
+        if(($id == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']) || ($_SESSION['login']=="admin@admin.com")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function isAdmin(){
+        if(isLogged() && $_SESSION['login']=="admin@admin.com"){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     
@@ -215,7 +221,7 @@
         return $user;
     }
 
-
+//----------------------------------PICTURE CONTROLER---------------------------------
 
     
     

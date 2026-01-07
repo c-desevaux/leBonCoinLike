@@ -5,7 +5,7 @@
     class PictureModele extends Modele {
 
         private static $tableName = "picture";
-        private static $idName = "idPicture";
+        private static $idName = "idPic";
 
     //-------------------------------GET FUNCTION-----------------------------
 

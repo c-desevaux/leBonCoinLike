@@ -6,7 +6,7 @@
 
         
         private int $idAd;
-        private int $idPicture;
+        private int $idPic;
 
         public function __construct(int $idAd){
 
@@ -37,7 +37,7 @@
         }
 
         public function setId($id): void{
-            $this->idPicture;
+            $this->idPic;
         }
 
 
