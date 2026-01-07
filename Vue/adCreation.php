@@ -22,6 +22,7 @@
             <input class="edit" id="price" name="priceAd">
         </div>
         <input type="hidden" name="idUser" value="<?= UserModele::getUserByEmail($_SESSION['login'])[0]['idUser'] ?>">
+        <div class="d-flex justify-content-center"><?= $msg ?></div>
         <br>
         <button class="btn del" type="submit">Valider</button>
     </form>

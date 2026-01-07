@@ -92,27 +92,46 @@
     }
 
     function newAd(){
+        $msg="";
         require 'Vue/adCreation.php';
     }
 
     function addAd(string $title, string $desc, float $price, int $userId){
-        $ad = AdModele::addAd($title, $desc, $price, $userId);
-        $ad = AdModele::getAdById($ad->getId());
-        $ad = $ad[0];
-        $user = UserModele::getUserById($userId);
-        $user=$user[0];
-        require 'Vue/adDetail.php';
+        $msg="";
+        if(strlen($title)>1 && strlen($desc)>2 && $price>=0){
+            $ad = AdModele::addAd($title, $desc, $price, $userId);
+            $ad = AdModele::getAdById($ad->getId());
+            $ad = $ad[0];
+            $user = UserModele::getUserById($userId);
+            $user=$user[0];
+            require 'Vue/adDetail.php';
+        }else{
+            $msg="Champs incorrect";
+            require 'Vue/adCreation.php';
+        }
+        
     }
 
     function editAd(int $id){
+        $msg="";
         $ad = AdModele::getAdById($id);
         $ad=$ad[0];
         require 'Vue/adEdit.php';
     }
 
     function editAdValidation(int $id, string $title, string $txt, float $price, int $idUser){
-       $ad = AdModele::updateAd($id, $title, $txt, $price, $idUser);
-        adDetail($id);
+
+        if(strlen($title)>1 && strlen($txt)>2 && $price>=0){
+            $ad = AdModele::updateAd($id, $title, $txt, $price, $idUser);
+            adDetail($id);
+        }else{
+            $msg="Champs incorrect";
+            $ad = AdModele::getAdById($id);
+            $ad=$ad[0];
+            require 'Vue/adEdit.php';
+        }
+       
+        
     }
 
     function adDelete(int $id){
@@ -124,8 +143,13 @@
 
 //-------------------------------------------USER CONTROLERS----------------------------------------
     function userList(){
-        $users = UserModele::getAllUsers();
-        require 'Vue/userList.php';
+        if(isLogged() && $_SESSION['login'] == "admin@admin.com"){
+            $users = UserModele::getAllUsers();
+            require 'Vue/userList.php';
+        }else{
+            require 'Vue/vueHome.php';
+        }
+        
     }
 
     function userDetail(int $id){
@@ -141,18 +165,28 @@
             $_SESSION['login']="";
         }
         $user = UserModele::deleteUserById($id);
-        userList();
+        homePage();
     }
 
     function editUser(int $id){
+        $msg="";
         $user = UserModele::getUserById($id);
         $user = $user[0];
         require 'Vue/userEdit.php';
     }
 
     function editUserValidation(int $idUser, string $pseudUser, string $emailUser, string $pwUser){
-        $user = UserModele::updateUser($idUser, $pseudUser, $emailUser, $pwUser);
-        userDetail($idUser);
+        
+        if(strlen($pseudUser)>2){
+            $user = UserModele::updateUser($idUser, $pseudUser, $emailUser, $pwUser);
+            userDetail($idUser);
+        }else{
+            $msg="Champs incorrect";
+            $user = UserModele::getUserById($idUser);
+            $user = $user[0];
+            require 'Vue/userEdit.php';
+        }
+        
     }
 
     function userAdd($pseudo, $email, $pwd){

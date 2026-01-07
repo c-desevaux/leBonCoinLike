@@ -75,6 +75,9 @@ VALUES
 420, 4)
 
 
+----------Compte admin---------
 
+
+id: admin@admin.com
 
 

@@ -7,15 +7,13 @@
 
     <?php if($users):foreach ($users as $user): ?>
 
-        <div><?= $user['pseudUser'] ?></div>
-        <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
-        
-        
-
-        <?php if(isLogged() && $_SESSION['login'] == "admin@admin.com"):?>
+        <?php if(!($user['emailUser'] == "admin@admin.com")):?>
+            <div><?= $user['pseudUser'] ?></div>
+            <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
             <a class="btn del-user" href="index.php?action=delUser&id=<?= $user['idUser'] ?>">Suprimer</a>
-        <?php endif;?> 
-        <br>
+            <br>
+        <?php endif;?>
+        
 
     <?php endforeach; else: ?>
         <div>Aucun utilisateur disponible</div>

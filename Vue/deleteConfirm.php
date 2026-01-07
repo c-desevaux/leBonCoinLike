@@ -3,6 +3,8 @@
 
 <?php ob_start(); ?>
 
+
+
     <div>  
         
         <h1>Suppression de: <?= $name ?></h1>
