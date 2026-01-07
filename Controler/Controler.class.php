@@ -11,9 +11,22 @@
         require 'Vue/wipPage.php';
     }
 
+    function errorPage(){
+        require 'Vue/vueError.php';
+    }
+
+    function errorManager(){
+        if(isset($_GET['id'])){
+            if(((str_contains($_GET['action'], 'User') && !isUserExist($_GET['id']))  || (str_contains($_GET['action'], 'Ad') && !isAdExist($_GET['id'])) )){
+                errorPage();
+            }
+        }
+    }
+
     function accountPage(){
         require 'Vue/vueAccountForm.php';
     }
+
 
     function validation($pseudo, $email, $pwd){
         $hash = password_hash($pwd, PASSWORD_BCRYPT);
@@ -93,6 +106,10 @@
         }
     }
 
+
+
+    
+
     
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adList(){
@@ -107,10 +124,12 @@
 
     function adDetail(int $id){
         $ad = AdModele::getAdById($id);
-        $ad=$ad[0];
-        $user = UserModele::getUserById($ad['idUser']);
-        $user = $user[0];
-        require 'Vue/adDetail.php';
+        if($ad){
+            $ad=$ad[0];
+            $user = UserModele::getUserById($ad['idUser']);
+            $user = $user[0];
+            require 'Vue/adDetail.php';
+        }
     }
 
     function newAd(){
@@ -159,6 +178,14 @@
     function adDelete(int $id){
         $ad = AdModele::deleteAdById($id);
         adList();
+    }
+
+    function isAdExist($id){
+        if(AdModele::getAdById($id)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
@@ -219,6 +246,14 @@
     function userAdd($pseudo, $email, $pwd){
         $user =UserModele::addUser($pseudo, $email, $pwd);
         return $user;
+    }
+
+    function isUserExist($id){
+        if(UserModele::getUserById($id)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 //----------------------------------PICTURE CONTROLER---------------------------------

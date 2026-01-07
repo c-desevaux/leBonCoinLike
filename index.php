@@ -10,11 +10,14 @@
 
     try{
         if(isset($_GET['action'])){
+            
+            
             if($_GET['action'] == 'listUser'){
                 userList();
             }else if($_GET['action'] == 'listAd'){
                 adList();
             }else if($_GET['action'] == 'adListByUser'){
+                errorManager();
                 adListByUser($_GET['idUser']);
             }else if($_GET['action'] == 'delete'){
                 deleteConfirm($_POST['toDelete'], $_POST['id']);
@@ -35,10 +38,12 @@
             }else if($_GET['action'] == 'editAdValidation'){
                 editAdValidation($_POST['idAd'], $_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']);
             }else if($_GET['action'] == 'detailUser'){
+                errorManager();
                 userDetail($_GET['id']);
             }else if($_GET['action'] == 'selfUser'){
                 userDetail(UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']);
             }else if($_GET['action'] == 'detailAd'){
+                errorManager();
                 adDetail($_GET['id']);
             }else if($_GET['action'] == 'account'){
                 accountPage();
