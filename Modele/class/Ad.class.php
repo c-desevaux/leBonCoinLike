@@ -59,7 +59,7 @@
         
         public function setTitle($title): void{
 
-            if(preg_match('/^[a-zA-Z0-9À-ÿ ,.\'-]{3,20}$/u', $title)){
+            if(preg_match('/^[a-zA-Z0-9À-ÿ ,.\'-]{2,20}$/u', $title)){
                 $this->titleAd=$title;
             }else{
                 throw new AdException ("Titre non valide");

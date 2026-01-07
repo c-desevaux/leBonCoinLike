@@ -13,7 +13,7 @@
         <a class="btn nav-btn" href="index.php?action=home">Accueil</a>
         <a class="btn nav-btn" href="index.php?action=listAd">Annonces</a>
         <a class="btn nav-btn" href="index.php?action=listUser">Utilisateurs</a>
-        <a class="btn nav-btn" href="index.php?action=login">Se connecter</a>
+        <a class="btn nav-btn" href="index.php?action=logout">Se déconnecter</a>
         
     </nav>
     <br>

@@ -29,11 +29,11 @@
             }else if($_GET['action'] == 'newAd'){
                 newAd();
             }else if($_GET['action'] == 'addAd'){
-                addAd($_POST['titleAd'], $_POST['txtAd'], $_POST['priceAd'], $_POST['idUser']);
+                addAd($_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], $_POST['idUser']);
             }else if($_GET['action'] == 'editAd'){
                 editAd($_GET['id']);
             }else if($_GET['action'] == 'editAdValidation'){
-                editAdValidation($_POST['idAd'], $_POST['titleAd'], $_POST['txtAd'], $_POST['priceAd'], UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']);
+                editAdValidation($_POST['idAd'], $_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']);
             }else if($_GET['action'] == 'detailUser'){
                 userDetail($_GET['id']);
             }else if($_GET['action'] == 'selfUser'){

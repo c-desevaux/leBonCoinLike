@@ -13,8 +13,14 @@
 
         private static function connect(): PDO{
 
-            if(file_exists("DB/config.ini")){
-                $config =parse_ini_file("DB/config.ini", true);
+            if(isset($_SESSION) && $_SESSION['login'] == "admin@admin.com"){
+                $path = "DB/config.ini";
+            }else{
+                $path="DB/configUser.ini";
+            }
+
+            if(file_exists($path)){
+                $config =parse_ini_file($path, true);
                 extract($config['database']);
                 $dsn = "mysql:dbname=".$DBNAME.";host=".$HOST.":" . $PORT;
             }else{
@@ -43,8 +49,14 @@
 //Fonction qui permet de verifier l'existance de la table avant de faire les requetes sql
         public static function checkTables($table): bool{
 
-            if(file_exists("DB/config.ini")){
-                $config = parse_ini_file("DB/config.ini", true);
+            if(isset($_SESSION) && $_SESSION['login'] == "admin@admin.com"){
+                $path = "DB/config.ini";
+            }else{
+                $path="DB/configUser.ini";
+            }
+
+            if(file_exists($path)){
+                $config = parse_ini_file($path, true);
                 extract($config['database']);
 
                 if(in_array($table, self::$tables)){

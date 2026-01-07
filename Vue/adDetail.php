@@ -11,7 +11,6 @@
     <div>Date: <?= $ad['dateAd'] ?></div>
     <div>Prix: <?= $ad['priceAd'] ?>€</div>
     <div>Annonce de: <?= $user['pseudUser']?></div>
-    <br>
     <div>
         <a class="btn del" href="index.php?action=detailUser&id=<?=  $ad['idUser']?>">Voir le profil de l'annonceur(e)</a>
        
@@ -33,7 +32,11 @@
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };

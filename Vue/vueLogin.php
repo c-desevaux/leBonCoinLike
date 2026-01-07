@@ -25,7 +25,11 @@
 
 <?php
         if(isLogged()){
-                require 'Vue/templateLogin.php';
+                if($_SESSION['login']=="admin@admin.com"){
+                    require 'Vue/templateAdmin.php';
+                }else{
+                    require 'Vue/templateLogin.php';
+                }
         }else{
                 require 'Vue/templateLogout.php';
         };
