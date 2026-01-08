@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <title><?= $title ?></title>
 </head>
-<body>
-    <nav class="d-flex justify-content-center align-items-center gap-3 p-3" id="nav-bar">
+<body class="d-flex flex-column w-75">
+    <nav class="d-flex flex-wrap justify-content-center align-items-center align-self-center gap-3 p-3" id="nav-bar">
         <a class="btn nav-btn" href="index.php?action=home">Accueil</a>
         <a class="btn nav-btn" href="index.php?action=listAd">Annonces</a>
         <a class="btn nav-btn" href="index.php?action=login">Se connecter</a>
