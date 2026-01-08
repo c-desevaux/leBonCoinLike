@@ -24,15 +24,21 @@
     }
 
     function accountPage(){
+        $msg='';
         require 'Vue/vueAccountForm.php';
     }
 
 
     function validation($pseudo, $email, $pwd){
-        $hash = password_hash($pwd, PASSWORD_BCRYPT);
-        if(userAdd($pseudo, $email, $hash)){
-            require 'Vue/vueAccountCreated.php';
+       $msg='';
+        if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/u', $pwd)){
+            if(userAdd($pseudo, $email, $pwd)){
+                require 'Vue/vueAccountCreated.php';
+            }else{
+                $msg='Erreur lors de la création du profil';
+            }
         }else{
+            $msg='Mot de passe trop faible';
             require 'Vue/vueAccountForm.php';
         }
     }
