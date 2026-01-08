@@ -134,6 +134,7 @@
             $ad=$ad[0];
             $user = UserModele::getUserById($ad['idUser']);
             $user = $user[0];
+            $pics = PictureModele::getPictureByAdId($id);
             require 'Vue/adDetail.php';
         }
     }

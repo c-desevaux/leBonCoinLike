@@ -5,13 +5,19 @@
 
     <h1><?= $ad['titleAd'] ?></h1>
 
+    <div class="img-container">
+        <?php if($pics):foreach ($pics as $pic): ?>
+            <img src="img/<?= $pic['namePic'] ?>" id="<?= $pic['idPic'] ?>" alt="<?= $ad['titleAd'] ?>">
+        <?php endforeach; endif;?>
+    </div>
+    <br>
 
-
-    <div><?= $ad['txtAd'] ?></div>
+    <div class="d-flex justify-content-center w-75"><?= $ad['txtAd'] ?></div>
     <div>Date: <?= $ad['dateAd'] ?></div>
     <div>Prix: <?= $ad['priceAd'] ?>€</div>
     <div>Annonce de: <?= $user['pseudUser']?></div>
     <div>
+        <br>
         <a class="btn del" href="index.php?action=detailUser&id=<?=  $ad['idUser']?>">Voir le profil de l'annonceur(e)</a>
        
         <?php if(isLogged() && $ad['idUser'] == UserModele::getUserByEmail($_SESSION['login'])[0]['idUser']):?>

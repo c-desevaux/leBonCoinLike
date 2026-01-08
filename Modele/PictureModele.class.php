@@ -14,6 +14,10 @@
             return parent::getBy(self::$tableName, self::$idName, $id);
         }
 
+        public static function getPictureByAdId(int $idAd){
+            return parent::getBy(self::$tableName, 'idAd', $idAd);
+        }
+
 
 
     //-------------------------------ADD FUNCTION-----------------------------

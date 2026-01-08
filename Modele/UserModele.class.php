@@ -82,6 +82,7 @@
             try{
                 $user = new User($pseudo, $email, $pwd);
                 $pwd = password_hash($pwd, PASSWORD_BCRYPT);
+                echo ($pwd);
                 $sql = "INSERT INTO User_ (pseudUser, emailUser, pwUser)
                 VALUES (:pseudo, :email, :pwd)";
                 $request = $connexion->prepare($sql);

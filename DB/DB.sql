@@ -25,8 +25,10 @@ CREATE TABLE Ad(
 
 CREATE TABLE Picture(
    idPic INT AUTO_INCREMENT,
+   namePic VARCHAR(50)  NOT NULL,
    idAd INT NOT NULL,
    PRIMARY KEY(idPic),
+   UNIQUE(namePic),
    FOREIGN KEY(idAd) REFERENCES Ad(idAd) ON DELETE CASCADE
 );
 
@@ -73,6 +75,20 @@ VALUES
 ('PS5',
 "Tres bon état disponible sur Evreux",
 420, 4)
+
+--------Photos de base---------
+
+INSERT INTO Picture (namePic, idAd)
+VALUES
+('velo.png' , 1)
+
+INSERT INTO Picture (namePic, idAd)
+VALUES
+('ps5.png' , 2)
+
+INSERT INTO Picture (namePic, idAd)
+VALUES
+('ps5-2.png' , 2)
 
 
 ----------Compte admin---------

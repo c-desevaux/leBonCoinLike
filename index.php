@@ -4,6 +4,7 @@
     require_once 'Modele/Modele.class.php';
     require_once 'Modele/AdModele.class.php';
     require_once 'Modele/UserModele.class.php';
+    require_once 'Modele/PictureModele.class.php';
     require_once 'Controler/Controler.class.php';
 
     session_start();

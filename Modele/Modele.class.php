@@ -4,6 +4,7 @@
     require_once 'ModeleException.class.php';
     require_once 'class/Ad.class.php';
     require_once 'class/User.class.php';
+    require_once 'class/Picture.class.php';
 
 
         abstract class Modele {
@@ -91,32 +92,7 @@
             }
 
 
-//-----------------------Get one or more record from a specific table choosing the column name----------------------
 
-            public static function getByClass(string $table, string $column, string $value){
-
-                $connexion = DbLBCL::getConnexion();            //start connexion
-
-                try{
-
-                    if(DbLBCL::checkTables($table)){
-                        $sql = "SELECT * FROM ".$table." WHERE ".$column."=?";
-                        $request = $connexion->prepare($sql);         
-                        $request->execute([$value]);
-                        $records = $request->fetchAll(PDO::FETCH_CLASS);
-                        $request->closeCursor();
-                        if($records){
-                            return $records;
-                        }
-                    }else{
-                        throw new ModeleException("La table ciblée n'existe pas");
-                    }
-                    
-                }catch(ModeleException $e){
-                    die('Err: '.$e->getMessage());
-                }
-
-            }
 
 //-----------------------------Template for all search with LIKE functions-----------------------------------
             public static function getLike(string $table, string $column, string $value){
