@@ -31,7 +31,7 @@
             <textarea id="description" name="txtAd"></textarea>
         </div>
         <br>
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column w-100">
             <label for="price">Prix</label>
             <input class="edit" id="price" name="priceAd">
         </div>
