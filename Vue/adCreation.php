@@ -26,7 +26,7 @@
             
         </div>
         <br>
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column w-100">
             <label for="description">Descriptif</label>
             <textarea id="description" name="txtAd"></textarea>
         </div>
