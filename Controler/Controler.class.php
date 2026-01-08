@@ -157,19 +157,18 @@
             $user = UserModele::getUserById($userId);
             $user=$user[0];
             require 'Vue/adDetail.php';
-        }if(!strlen($title)>1){
-            echo "titre";
-            $msg.="titre"; 
-        }if(!strlen($desc)>2){
-            echo "titre";
-            $msg.=" description";
-        }if(!$price>=0){
-            echo "titre";
-            $msg.=" prix";
+        }else{
+            $msg.="Le(s) champ(s): ";
         }
+        if(!strlen($title)>1){
+            $msg.="TITRE ";
+        }if(!strlen($desc)>2){
+            $msg.="DESCRIPTION ";
+        }if(!$price>=0){
+            $msg.="PRIX ";
+        }
+        $msg.="est/sont incorrect(s)";
 
-        $msg.="Les Champs:"+$msg;
-        $msg.=$msg+" sont incorrects";
         require 'Vue/adCreation.php';
         
     }

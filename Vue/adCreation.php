@@ -17,23 +17,25 @@
             <textarea id="description" name="txtAd"></textarea>
         </div>
         <br>
-        <form >
+        
             <label for="picture">Photos</label>
             <div class="d-flex flex-column justify-content-center align-items-center">
-            
                 <input class="w-100" type="file" class="pic-input" name="pic" accept="image/*">
                 <button class="w-100 btn del btn-pic" type="button">Ajouter Photo</button>
             </div>
-        </form>
         <br>
         <div class="d-flex flex-column w-100">
             <label for="price">Prix</label>
             <input class="edit" id="price" name="priceAd">
         </div>
         <input type="hidden" name="idUser" value="<?= UserModele::getUserByEmail($_SESSION['login'])[0]['idUser'] ?>">
+        <br>
         <div class="d-flex justify-content-center"><?= $msg ?></div>
         <br>
-        <button class="btn del" type="submit">Valider</button>
+        <div class="d-flex justify-content-center">
+            <button class="btn del" type="submit">Valider</button>
+        </div>
+        
     </form>
 </div>
 
