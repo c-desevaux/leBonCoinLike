@@ -4,6 +4,10 @@
 //--------------------------------------MAIN PAGES CONTROLLER-------------------------------
 
     function homePage(){
+
+        if(!UserModele::getUserByEmail('admin@admin.com')){
+            UserModele::addUser('admin', 'admin@admin.com', 'Admin999**');
+        }
         require 'Vue/vueHome.php';
     }
 
