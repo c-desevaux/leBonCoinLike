@@ -157,10 +157,20 @@
             $user = UserModele::getUserById($userId);
             $user=$user[0];
             require 'Vue/adDetail.php';
-        }else{
-            $msg="Champs incorrect";
-            require 'Vue/adCreation.php';
+        }if(!strlen($title)>1){
+            echo "titre";
+            $msg.="titre"; 
+        }if(!strlen($desc)>2){
+            echo "titre";
+            $msg.=" description";
+        }if(!$price>=0){
+            echo "titre";
+            $msg.=" prix";
         }
+
+        $msg.="Les Champs:"+$msg;
+        $msg.=$msg+" sont incorrects";
+        require 'Vue/adCreation.php';
         
     }
 

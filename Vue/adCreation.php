@@ -12,8 +12,11 @@
             <input class="edit" id="title" name="titleAd">
         </div>
         <br>
-        <div class="d-flex flex-column">
-
+        <div class="d-flex flex-column w-100">
+            <label for="description">Descriptif</label>
+            <textarea id="description" name="txtAd"></textarea>
+        </div>
+        <br>
         <form >
             <label for="picture">Photos</label>
             <div class="d-flex flex-column justify-content-center align-items-center">
@@ -22,14 +25,6 @@
                 <button class="w-100 btn del btn-pic" type="button">Ajouter Photo</button>
             </div>
         </form>
-            
-            
-        </div>
-        <br>
-        <div class="d-flex flex-column w-100">
-            <label for="description">Descriptif</label>
-            <textarea id="description" name="txtAd"></textarea>
-        </div>
         <br>
         <div class="d-flex flex-column w-100">
             <label for="price">Prix</label>
