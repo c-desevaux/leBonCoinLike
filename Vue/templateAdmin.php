@@ -16,7 +16,6 @@
         <a class="btn nav-btn" href="index.php?action=logout">Se déconnecter</a>
         
     </nav>
-    <br>
     <div class="d-flex flex-column justify-content-center align-items-center pb-3" id='content'>
         <?= $content ?>
     </div>

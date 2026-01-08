@@ -18,18 +18,16 @@
         </div>
         <br>
         
-            <label for="picture">Photos</label>
-            <div class="d-flex flex-column justify-content-center align-items-center">
-                <input class="w-100" type="file" class="pic-input" name="pic" accept="image/*">
-                <button class="w-100 btn del btn-pic" type="button">Ajouter Photo</button>
-            </div>
-        <br>
+        <label for="picture">Photos</label>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <input class="w-100" type="file" class="pic-input" name="pic" accept="image/*">
+            <button class="w-100 btn del btn-pic" type="button">Ajouter Photo</button>
+        </div>
         <div class="d-flex flex-column w-100">
             <label for="price">Prix</label>
             <input class="edit" id="price" name="priceAd">
         </div>
         <input type="hidden" name="idUser" value="<?= UserModele::getUserByEmail($_SESSION['login'])[0]['idUser'] ?>">
-        <br>
         <div class="d-flex justify-content-center"><?= $msg ?></div>
         <br>
         <div class="d-flex justify-content-center">

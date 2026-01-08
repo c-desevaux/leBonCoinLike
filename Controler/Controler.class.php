@@ -160,11 +160,11 @@
         }else{
             $msg.="Le(s) champ(s): ";
         }
-        if(!strlen($title)>1){
+        if(!(strlen($title)>1)){
             $msg.="TITRE ";
-        }if(!strlen($desc)>2){
-            $msg.="DESCRIPTION ";
-        }if(!$price>=0){
+        }if(!(strlen($desc)>2)){
+            $msg.="DESCRIPTIF ";
+        }if(!($price>=0)){
             $msg.="PRIX ";
         }
         $msg.="est/sont incorrect(s)";
