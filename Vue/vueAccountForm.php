@@ -21,6 +21,9 @@
             <input id="pwd" name="pwUser" type="password" value="" placeholder="********" required>
         </div>
         <br>
+        <?= $msg ?>
+        <br>
+        <br>
         <button class="btn btn-title w-100" id="btn-submit-account" type="submit">Créer</button>
     </form>
 </div>

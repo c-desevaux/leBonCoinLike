@@ -13,6 +13,20 @@
         </div>
         <br>
         <div class="d-flex flex-column">
+
+        <form >
+            <label for="picture">Photos</label>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+            
+                <input class="w-100" type="file" class="pic-input" name="pic" accept="image/*">
+                <button class="w-100 btn del btn-pic" type="button">Ajouter Photo</button>
+            </div>
+        </form>
+            
+            
+        </div>
+        <br>
+        <div class="d-flex flex-column">
             <label for="description">Descriptif</label>
             <textarea id="description" name="txtAd"></textarea>
         </div>

@@ -81,12 +81,13 @@
 
             try{
                 $user = new User($pseudo, $email, $pwd);
+                $pwd = password_hash($pwd, PASSWORD_BCRYPT);
                 $sql = "INSERT INTO User_ (pseudUser, emailUser, pwUser)
                 VALUES (:pseudo, :email, :pwd)";
                 $request = $connexion->prepare($sql);
                 $request->execute(['pseudo' => $user->getPseudo(),
                                     'email' => $user->getEmail(),
-                                    'pwd' => $user->getPwd()]);
+                                    'pwd' => $pwd]);
                 $request->closeCursor();
                 $user->setId($connexion->lastInsertId());       //On rajoute l'id a l'objet user creer apres l'insert
                 $user->setDateCreation((UserModele::getUserById($user->getId()))[0]['dateUser']);

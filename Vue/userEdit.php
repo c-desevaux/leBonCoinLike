@@ -8,7 +8,7 @@
 
         <form class="form d-flex flex-column" method="POST" action="index.php?action=editUserValidation">
             <label for="pseudoEdit">Votre pseudo</label>
-            <input id="pseudoEdit" name="pseudUser" value="<?= $user['pseudUser'] ?>">
+            <input type="text" id="pseudoEdit" name="pseudUser" value="<?= $user['pseudUser'] ?>">
             <input type="hidden" name="idUser" value="<?= $user['idUser'] ?>">
             <input type="hidden" name="emailUser" value="<?= $user['emailUser'] ?>">
             <input type="hidden" name="pwUser" value="<?= $user['pwUser'] ?>">

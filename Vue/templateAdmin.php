@@ -9,7 +9,7 @@
     <title><?= $title ?></title>
 </head>
 <body>
-    <nav class="d-flexjustify-content-center align-items-center gap-3 p-3" id="nav-bar">
+    <nav class="d-flex justify-content-center align-items-center gap-3 p-3" id="nav-bar">
         <a class="btn nav-btn" href="index.php?action=home">Accueil</a>
         <a class="btn nav-btn" href="index.php?action=listAd">Annonces</a>
         <a class="btn nav-btn" href="index.php?action=listUser">Utilisateurs</a>

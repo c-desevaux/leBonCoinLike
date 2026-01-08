@@ -1,6 +1,4 @@
 
-console.log('JS chargé');
-
 //Correction affichage fond input MacOS
 
 document.querySelectorAll('input[type="text"], input[type="password"]').forEach(input => {
@@ -17,6 +15,8 @@ btnBacks.forEach( btn => { btn.addEventListener('click', () => {
     history.back();
     })
 });
+
+
 
 
 
