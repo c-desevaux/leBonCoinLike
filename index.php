@@ -38,7 +38,6 @@
                 }else{
                     addAd($_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], $_POST['idUser'], "");
                 }
-                
             }else if($_GET['action'] == 'editAd'){
                 editAd($_GET['id']);
             }else if($_GET['action'] == 'editAdValidation'){

@@ -59,7 +59,7 @@
             
             if(password_verify($pwd, $user['pwUser'])){
                 $_SESSION['login']=$email;
-                require 'Vue/loginSuccess.php';
+                require 'Vue/vueHome.php';
             }else{
                 $msg="identifiant ou mot de passe incorrect";
                 require 'Vue/vueLogin.php';
