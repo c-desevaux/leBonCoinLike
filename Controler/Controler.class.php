@@ -167,9 +167,9 @@
             $msg.="Le(s) champ(s): ";
             if(!(strlen($title)>1)){
                 $msg.="TITRE ";
-            }if(!(strlen($desc)>2)){
+            }if(!(strlen($desc)>2) || !(preg_match('/^[\p{L}\p{N}\p{P}\p{Z}\p{S}\r\n]{3,500}$/u', $desc))){
                 $msg.="DESCRIPTIF ";
-            }if(!($price>=0)){
+            }if(!($price>=0) || !(preg_match('/^[a-zA-Z0-9À-ÿ ,.\'-]{2,20}$/u', $title))){
                 $msg.="PRIX ";
             }
             $msg.="est/sont incorrect(s)";

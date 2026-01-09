@@ -69,7 +69,7 @@
 
         public function setTxt($txt): void{
 
-            if(preg_match('/^[\p{L}\p{N}\p{P}\p{Z}\p{S}]{3,500}$/u', $txt)){
+            if(preg_match('/^[\p{L}\p{N}\p{P}\p{Z}\p{S}\r\n]{3,500}$/u', $txt)){
                 $this->txtAd=$txt;
             }else{
                 throw new AdException ("Description non valide");
