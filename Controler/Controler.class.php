@@ -124,18 +124,13 @@
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adList(){
         $ads  = AdModele::getAllAds();
-        $pics = [];
-        foreach($ads as $ad){
-            $pic = PictureModele::getPictureByAdId($ad['idAd']);
-            if($pic){
-                $pics[]=$pic[0];
-            }
-        }
+        $pics = picListTab($ads);
         require 'Vue/adList.php';
     }
 
     function adListByUser($userId){
         $ads = AdModele::getAdByUserId($userId);
+        $pics = picListTab($ads);
         require 'Vue/adList.php';
     }
 
@@ -310,5 +305,16 @@
 
         }
 
+    }
+
+    function picListTab(array $ads){
+        $pics = [];
+        foreach($ads as $ad){
+            $pic = PictureModele::getPictureByAdId($ad['idAd']);
+            if($pic){
+                $pics[]=$pic[0];
+            }
+        }
+        return $pics;
     }
     

@@ -11,7 +11,7 @@
         <div class="d-flex flex-column justify-content-center align-items-center mx-3">
             <div class="title"><?= $ad['titleAd'] ?></div>
 
-            <?php if($pics):foreach($pics as $picture): ?>
+            <?php if($pics):foreach($pics as $picture):?>
                 <?php if($picture['idAd'] == $ad['idAd']):?>
                     <div class="img-container list">
                         <img src="img/<?= $picture['namePic'] ?>" id="<?= $picture['idPic'] ?>" alt="<?= $ad['titleAd'] ?>">
