@@ -1,7 +1,6 @@
 <?php $title="Login";?>
 
 <?php ob_start(); ?>
-
     <h1>Votre compte a bien été crée</h1>
     <a class="btn del" href="index.php?action=login">Login</a>
 

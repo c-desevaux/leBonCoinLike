@@ -3,8 +3,15 @@
 
 <?php ob_start(); ?>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div>  
-        <h1>Bienvenu(e) <?= $user['pseudUser'] ?></h1>
+        <h1 class="welcome-title">Bienvenue <?= $user['pseudUser'] ?></h1>
     </div>
 
 <?php $content = ob_get_clean(); ?>
