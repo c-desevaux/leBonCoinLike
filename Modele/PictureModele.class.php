@@ -23,17 +23,19 @@
     //-------------------------------ADD FUNCTION-----------------------------
 
 
-        public static function addPictureId(int $adId){
+        public static function addPictureId(int $adId, string $picName){
 
             $connexion = DbLBCL::getConnexion();
 
             try{
-                $pict = new Picture($adId);
+                $pict = new Picture($adId, $picName);
 
-                $sql = "INSERT INTO picture (idAd)
-                VALUES (adId)";
+                $sql = "INSERT INTO picture (idAd, namePic)
+                VALUES (:adId, :picName)";
                 $request = $connexion->prepare($sql);
-                $request->execute(['adId' => $pict->getIdAd()]);
+                $request->execute(['adId' => $pict->getIdAd(),
+                                    'picName' => $pict->getNamePic()
+                                ]);
                 $request->closeCursor();
                 //On rajoute l'id a l'objet ad creer apres l'insert
                 $pict->setId($connexion->lastInsertId());

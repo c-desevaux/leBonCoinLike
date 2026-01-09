@@ -6,7 +6,7 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
     <h1>Votre annonce</h1>
 
-    <form class="form d-flex flex-column justify-content-center align-items-left" method="POST" action="index.php?action=addAd">
+    <form class="form d-flex flex-column justify-content-center align-items-left" method="POST" action="index.php?action=addAd" enctype="multipart/form-data">
         <div class="d-flex flex-column">
             <label for="title">Titre</label>
             <input class="edit" id="title" name="titleAd">
@@ -21,8 +21,8 @@
         <label for="picture">Photos</label>
         <div class="d-flex flex-column justify-content-center align-items-center">
             <input class="w-100" type="file" class="pic-input" name="pic" accept="image/*">
-            <button class="w-100 btn del btn-pic" type="button">Ajouter Photo</button>
         </div>
+        <br>
         <div class="d-flex flex-column w-100">
             <label for="price">Prix</label>
             <input class="edit" id="price" name="priceAd">

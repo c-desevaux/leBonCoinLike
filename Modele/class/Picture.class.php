@@ -7,12 +7,14 @@
         
         private int $idAd;
         private int $idPic;
+        private string $namePic;
 
-        public function __construct(int $idAd){
+        public function __construct(int $idAd, string $namePic){
 
             try{
 
                 $this->setIdAd($idAd);
+                $this->setNamePic($namePic);
 
             }catch(PictureException $e){
                 die("Err: ".$e->getMessage());
@@ -22,6 +24,10 @@
 
         public function getIdAd(): int{
             return $this->idAd;
+        }
+
+        public function getNamePic(): string{
+            return $this->namePic;
         }
 
 
@@ -38,6 +44,10 @@
 
         public function setId($id): void{
             $this->idPic;
+        }
+
+        public function setNamePic(): void{
+            $this->namePic;
         }
 
 
