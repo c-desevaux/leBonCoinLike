@@ -6,6 +6,7 @@
     <h1><?= $ad['titleAd'] ?></h1>
 
     <div class="img-container">
+        
         <?php if(isset($pics)): foreach ($pics as $pic): ?>
             <img src="img/<?= $pic['namePic'] ?>" id="<?= $pic['idPic'] ?>" alt="<?= $ad['titleAd'] ?>">
         <?php endforeach; endif;?>

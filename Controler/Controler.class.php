@@ -148,20 +148,19 @@
         require 'Vue/adCreation.php';
     }
 
-    function addAd(string $title, string $desc, float $price, int $userId, $pic){
+    function addAd(string $title, string $desc, float $price, int $userId, $pics){
         $msg="";
         
         if(strlen($title)>1 && strlen($desc)>2 && $price>=0){
             $ad = AdModele::addAd($title, $desc, $price, $userId);
             $ad = AdModele::getAdById($ad->getId());
             $ad = $ad[0];
-            var_dump("ici pic".$pic);
-            if($pic){
+            if($pics){
                 picAdd($ad['idAd']);
             }
             $user = UserModele::getUserById($userId);
             $user=$user[0];
-            require 'Vue/adDetail.php';
+            adDetail($ad['idAd']);
         }else{
             $msg.="Le(s) champ(s): ";
             if(!(strlen($title)>1)){

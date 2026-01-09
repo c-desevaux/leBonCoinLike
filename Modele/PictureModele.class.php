@@ -50,6 +50,7 @@
 
         public static function deletePictureById(int $id): void{
             parent::delete(self::$tableName, self::$idName, $id);
+            
         }
 
     }
