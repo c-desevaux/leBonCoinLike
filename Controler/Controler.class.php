@@ -36,10 +36,22 @@
     function validation($pseudo, $email, $pwd, $pwd2){
        $msg='';
         if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/u', $pwd)){
-            if(userAdd($pseudo, $email, $pwd) && ($pwd && $pwd2)){
-                require 'Vue/vueAccountCreated.php';
+            $testUser = UserModele::getUserByEmail($email);
+            if(!($testUser)){
+                if($pwd === $pwd2){
+                    if(userAdd($pseudo, $email, $pwd)){
+                        require 'Vue/vueAccountCreated.php';
+                    }else{
+                        $msg='Erreur lors de la création du profil';
+                        require 'Vue/vueAccountForm.php';
+                    } 
+                }else{
+                    $msg='Les deux mot de passe ne sont pas identique';
+                    require 'Vue/vueAccountForm.php';
+                }
             }else{
-                $msg='Erreur lors de la création du profil';
+                $msg="Email déjà existant";
+                require 'Vue/vueAccountForm.php';
             }
         }else{
             $msg='Mot de passe trop faible';

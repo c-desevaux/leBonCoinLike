@@ -27,7 +27,7 @@
         <?php endif; ?>
     </div>
     
-
+    <br>
 
     <a class="btn back">Retour</a>
 <?php $content = ob_get_clean(); ?>
