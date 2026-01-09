@@ -4,11 +4,11 @@
 <?php ob_start(); ?>
 
 <h1>Liste des annonces</h1>
-
+<br>
 <div class="d-flex justify-content-center">
     <?php if($ads):foreach ($ads as $ad): ?>
 
-        <div class="d-flex flex-column justify-content-center align-items-center mx-3">
+        <div class="d-flex flex-column align-items-center mx-3">
             <div class="title"><?= $ad['titleAd'] ?></div>
 
             <?php if($pics):foreach($pics as $picture):?>

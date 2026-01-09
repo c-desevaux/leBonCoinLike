@@ -38,7 +38,6 @@
                 }else{
                     addAd($_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], $_POST['idUser'], "");
                 }
-                
             }else if($_GET['action'] == 'editAd'){
                 editAd($_GET['id']);
             }else if($_GET['action'] == 'editAdValidation'){
@@ -54,7 +53,7 @@
             }else if($_GET['action'] == 'account'){
                 accountPage();
             }else if($_GET['action'] == 'validation'){
-                validation($_POST['pseudUser'], $_POST['emailUser'], $_POST['pwUser']);
+                validation($_POST['pseudUser'], $_POST['emailUser'], $_POST['pwUser'], $_POST['pw2User']);
             }else if($_GET['action'] == 'login'){
                 loginPage();
             }else if($_GET['action'] == 'connexion'){

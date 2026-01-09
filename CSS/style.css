@@ -132,6 +132,10 @@ textarea{
     height: 150px;
 }
 
+.main-box{
+    height: 70vh;
+}
+
 .mdp{
     font-size: 0.6em;
     font-weight: bold;
@@ -141,6 +145,10 @@ textarea{
 .title{
     font-size: 1.1em;
     font-weight: 500;
+}
+
+.welcome-title{
+    font-size: 4em;
 }
 
 

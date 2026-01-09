@@ -33,13 +33,25 @@
     }
 
 
-    function validation($pseudo, $email, $pwd){
+    function validation($pseudo, $email, $pwd, $pwd2){
        $msg='';
         if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/u', $pwd)){
-            if(userAdd($pseudo, $email, $pwd)){
-                require 'Vue/vueAccountCreated.php';
+            $testUser = UserModele::getUserByEmail($email);
+            if(!($testUser)){
+                if($pwd === $pwd2){
+                    if(userAdd($pseudo, $email, $pwd)){
+                        require 'Vue/vueAccountCreated.php';
+                    }else{
+                        $msg='Erreur lors de la création du profil';
+                        require 'Vue/vueAccountForm.php';
+                    } 
+                }else{
+                    $msg='Les deux mot de passe ne sont pas identique';
+                    require 'Vue/vueAccountForm.php';
+                }
             }else{
-                $msg='Erreur lors de la création du profil';
+                $msg="Email déjà existant";
+                require 'Vue/vueAccountForm.php';
             }
         }else{
             $msg='Mot de passe trop faible';
@@ -59,7 +71,7 @@
             
             if(password_verify($pwd, $user['pwUser'])){
                 $_SESSION['login']=$email;
-                require 'Vue/loginSuccess.php';
+                require 'Vue/vueHome.php';
             }else{
                 $msg="identifiant ou mot de passe incorrect";
                 require 'Vue/vueLogin.php';
@@ -167,9 +179,9 @@
             $msg.="Le(s) champ(s): ";
             if(!(strlen($title)>1)){
                 $msg.="TITRE ";
-            }if(!(strlen($desc)>2)){
+            }if(!(strlen($desc)>2) || !(preg_match('/^[\p{L}\p{N}\p{P}\p{Z}\p{S}\r\n]{3,500}$/u', $desc))){
                 $msg.="DESCRIPTIF ";
-            }if(!($price>=0)){
+            }if(!($price>=0) || !(preg_match('/^[a-zA-Z0-9À-ÿ ,.\'-]{2,20}$/u', $title))){
                 $msg.="PRIX ";
             }
             $msg.="est/sont incorrect(s)";

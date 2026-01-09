@@ -5,7 +5,11 @@
 
 
 <?php if(!isAdmin()):?>
-    <h1>Bienvenue sur le presque bon coin</h1>
+    <h1 class="welcome-title">Bienvenue
+        <?php if(isset($user)): ?>
+            <?= $user['pseudUser'] ?>
+        <?php endif; ?>
+        <br> sur le presque bon coin</h1>
     <?php if(isLogged()): ?>
         <a class="btn del-user" href="index.php?action=newAd">Publier une annonce</a>
     <?php else: ?>
