@@ -124,6 +124,13 @@
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adList(){
         $ads  = AdModele::getAllAds();
+        $pics = [];
+        foreach($ads as $ad){
+            $pic = PictureModele::getPictureByAdId($ad['idAd']);
+            if($pic){
+                $pics[]=$pic[0];
+            }
+        }
         require 'Vue/adList.php';
     }
 

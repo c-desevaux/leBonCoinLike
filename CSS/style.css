@@ -112,6 +112,10 @@ textarea{
     border: rgb(174, 174, 174) 0.5px solid;
 }
 
+.home{
+    height: 40px;
+}
+
 .log-title{
     font-size: 1.5em;
     font-weight:600;
@@ -123,15 +127,24 @@ textarea{
     max-width: 500px;
 }
 
+.list > img{
+    width: 150px;
+    height: 150px;
+}
+
 .mdp{
     font-size: 0.6em;
     font-weight: bold;
     text-decoration: underline;
 }
 
-
-.home{
-    height: 40px;
+.title{
+    font-size: 1.1em;
+    font-weight: 500;
 }
+
+
+
+
 
 
