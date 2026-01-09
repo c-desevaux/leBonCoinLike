@@ -3,6 +3,7 @@
 <?php ob_start(); ?>
 
 <div class="d-flex flex-column align-items-center w-75 login-form">
+    <br>
     <h1 class="text-dark log-title p-0 m-0">Créez votre compte</h1>
     <br>
     <form class="form d-flex flex-column justify-content-center align-items-center w-100" method="POST" action="index.php?action=validation">
@@ -16,9 +17,15 @@
             <input id="email" name="emailUser" type="email" placeholder="jean.dupont@gmail.com" required>
         </div>
         <br>
+        <br>
         <div class="d-flex flex-column w-100">
             <label for="pwd">Votre mot de passe</label>
             <input id="pwd" name="pwUser" type="password" value="" placeholder="********" required>
+        </div>
+        <br>
+        <div class="d-flex flex-column w-100">
+            <label for="pwd2">Confirmez votre mot de passe</label>
+            <input id="pwd2" name="pw2User" type="password" value="" placeholder="********" required>
         </div>
         <br>
         <?= $msg ?>

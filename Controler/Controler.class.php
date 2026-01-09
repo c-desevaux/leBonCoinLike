@@ -33,10 +33,10 @@
     }
 
 
-    function validation($pseudo, $email, $pwd){
+    function validation($pseudo, $email, $pwd, $pwd2){
        $msg='';
         if(preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/u', $pwd)){
-            if(userAdd($pseudo, $email, $pwd)){
+            if(userAdd($pseudo, $email, $pwd) && ($pwd && $pwd2)){
                 require 'Vue/vueAccountCreated.php';
             }else{
                 $msg='Erreur lors de la création du profil';

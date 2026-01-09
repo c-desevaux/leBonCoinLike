@@ -5,24 +5,28 @@
 
     <h1>Liste des utilisateurs</h1>
 
-    <?php if($users):foreach ($users as $user): ?>
+    <div class="d-flex flex-wrap">
+        <?php if($users):foreach ($users as $user): ?>
 
-        <?php if(!($user['emailUser'] == "admin@admin.com")):?>
-            <div><?= $user['pseudUser'] ?></div>
-            <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
-            <form method="POST" action="index.php?action=delete">
-                <input type="hidden" name="toDelete" value='User'>
-                <input type="hidden" name="id" value="<?= $user['idUser'] ?>">
-                <button class="btn del-user" type="submit">Suprimer</button>
-            </form>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <?php if(!($user['emailUser'] == "admin@admin.com")):?>
+                    <div><?= $user['pseudUser'] ?></div>
+                    <a class="btn del" href="index.php?action=detailUser&id=<?= $user['idUser'] ?>">Détails</a>
+                    <form method="POST" action="index.php?action=delete">
+                        <input type="hidden" name="toDelete" value='User'>
+                        <input type="hidden" name="id" value="<?= $user['idUser'] ?>">
+                        <button class="btn del-user" type="submit">Suprimer</button>
+                    </form>
+                    
+                    <br>
+                    <?php endif;?>
+            </div>
             
-            <br>
-        <?php endif;?>
-        
-
-    <?php endforeach; else: ?>
-        <div>Aucun utilisateur disponible</div>
-    <?php endif; ?>
+        <?php endforeach; else: ?>
+            <div>Aucun utilisateur disponible</div>
+        <?php endif; ?>
+    </div>
+    
 
 
     <a class="btn back">Retour</a>
