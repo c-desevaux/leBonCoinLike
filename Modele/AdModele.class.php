@@ -67,7 +67,17 @@
 //---------------------------------------------DELETE FUNCTIONS------------------------------------------------
 
             public static function deleteAdById(int $id): void{
-                parent::delete(self::$tableName, self::$idName, $id);
+                $picTab = PictureModele::getPictureByAdId($id);
+                if($picTab){                                    //S'il y a des images dans l'annonce
+                    foreach($picTab as $pic){                   //On les parcours
+                        $picPath = "img/" . $pic['namePic'];    //On retrouve leurs emplacement
+                        if (file_exists($picPath)) {            //On verifie quelles existent
+                            unlink($picPath);                   //On les supprimes
+                        }
+                    }
+                }
+                
+                parent::delete(self::$tableName, self::$idName, $id);       //Puis on supprime lannonce
             }
 
     
