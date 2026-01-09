@@ -155,6 +155,7 @@
             $ad = AdModele::addAd($title, $desc, $price, $userId);
             $ad = AdModele::getAdById($ad->getId());
             $ad = $ad[0];
+            var_dump("ici pic".$pic);
             if($pic){
                 picAdd($ad['idAd']);
             }
@@ -163,7 +164,6 @@
             require 'Vue/adDetail.php';
         }else{
             $msg.="Le(s) champ(s): ";
-
             if(!(strlen($title)>1)){
                 $msg.="TITRE ";
             }if(!(strlen($desc)>2)){

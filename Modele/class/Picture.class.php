@@ -43,11 +43,11 @@
         }
 
         public function setId($id): void{
-            $this->idPic;
+            $this->idPic = $id;
         }
 
-        public function setNamePic(): void{
-            $this->namePic;
+        public function setNamePic($name): void{
+            $this->namePic = $name;
         }
 
 

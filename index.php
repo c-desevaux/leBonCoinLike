@@ -33,8 +33,9 @@
             }else if($_GET['action'] == 'newAd'){
                 newAd();
             }else if($_GET['action'] == 'addAd'){
-                if(isset($_FILE['pic'])){
-                    addAd($_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], $_POST['idUser'], $_FILE['pic']['name']);
+        var_dump($_FILES);
+                if(isset($_FILES['pic'])){
+                    addAd($_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], $_POST['idUser'], $_FILES['pic']['name']);
                 }else{
                     addAd($_POST['titleAd'], $_POST['txtAd'], (float)$_POST['priceAd'], $_POST['idUser'], "");
                 }
