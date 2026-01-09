@@ -21,7 +21,7 @@
 
     function errorManager(){
         if(isset($_GET['id'])){
-            if(((str_contains($_GET['action'], 'User') && !isUserExist($_GET['id']))  || (str_contains($_GET['action'], 'Ad') && !isAdExist($_GET['id'])) )){
+            if(((str_contains($_GET['action'], 'User') && !isUserExist($_GET['id'])) || (str_contains($_GET['action'], 'Ad') && !isAdExist($_GET['id'])) )){
                 errorPage();
             }
         }
@@ -124,11 +124,13 @@
 //-------------------------------------------ADS CONTROLERS-----------------------------------------
     function adList(){
         $ads  = AdModele::getAllAds();
+        $pics = picListTab($ads);
         require 'Vue/adList.php';
     }
 
     function adListByUser($userId){
         $ads = AdModele::getAdByUserId($userId);
+        $pics = picListTab($ads);
         require 'Vue/adList.php';
     }
 
@@ -148,19 +150,32 @@
         require 'Vue/adCreation.php';
     }
 
-    function addAd(string $title, string $desc, float $price, int $userId){
+    function addAd(string $title, string $desc, float $price, int $userId, $pics){
         $msg="";
+        
         if(strlen($title)>1 && strlen($desc)>2 && $price>=0){
             $ad = AdModele::addAd($title, $desc, $price, $userId);
             $ad = AdModele::getAdById($ad->getId());
             $ad = $ad[0];
+            if($pics){
+                picAdd($ad['idAd']);
+            }
             $user = UserModele::getUserById($userId);
             $user=$user[0];
-            require 'Vue/adDetail.php';
+            adDetail($ad['idAd']);
         }else{
-            $msg="Champs incorrect";
+            $msg.="Le(s) champ(s): ";
+            if(!(strlen($title)>1)){
+                $msg.="TITRE ";
+            }if(!(strlen($desc)>2)){
+                $msg.="DESCRIPTIF ";
+            }if(!($price>=0)){
+                $msg.="PRIX ";
+            }
+            $msg.="est/sont incorrect(s)";
+
             require 'Vue/adCreation.php';
-        }
+            }
         
     }
 
@@ -269,5 +284,37 @@
 
 //----------------------------------PICTURE CONTROLER---------------------------------
 
-    
+    function picAdd($idAd){
+
+        if($_FILES['pic']['error'] === 0){
+            $source = $_FILES['pic']['tmp_name'];
+            $originalName = $_FILES['pic']['name'];
+            $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+
+            $rename = substr(password_hash($source, PASSWORD_BCRYPT), 10, 10);
+            $rename = str_replace(['/', '.', '$'], '0', $rename);
+            $rename .= rand(0, 10000);
+
+            $finalName = $rename. "." . $extension;  
+            $destination = "img/".$finalName;
+
+
+            if(move_uploaded_file($source, $destination)){
+                PictureModele::addPictureId($idAd, $finalName);
+            }
+
+        }
+
+    }
+
+    function picListTab(array $ads){
+        $pics = [];
+        foreach($ads as $ad){
+            $pic = PictureModele::getPictureByAdId($ad['idAd']);
+            if($pic){
+                $pics[]=$pic[0];
+            }
+        }
+        return $pics;
+    }
     

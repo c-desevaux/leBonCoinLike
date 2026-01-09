@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
     <title><?= $title ?></title>
 </head>
-<body>
-    <nav class="d-flex justify-content-center align-items-center gap-3 p-3" id="nav-bar">
+<body class="w-75 mx-auto">
+    <nav class="d-flex flex-wrap justify-content-center align-items-center gap-3 p-3" id="nav-bar">
         <a class="btn nav-btn" href="index.php?action=home">Accueil</a>
         <a class="btn nav-btn" href="index.php?action=listAd">Annonces</a>
         <a class="btn nav-btn" href="index.php?action=selfUser">Mon profil</a>
         <a class="btn nav-btn" href="index.php?action=logout">Se déconnecter</a>
         
     </nav>
-    <br>
     <div class="d-flex flex-column justify-content-center align-items-center pb-3" id='content'>
         <?= $content ?>
     </div>
