@@ -21,12 +21,14 @@
                 <input type="hidden" name="idUser" value="<?= $user['idUser'] ?>">
                 <button class="btn del-user" type="submit">Modifier mon compte</button>
             </form>
-            
+
+            <?php if($_SESSION['login']!="admin@admin.com"):?>
             <form method="POST" action="index.php?action=delete">
                 <input type="hidden" name="id" value=<?= $user['idUser'] ?>>
                 <input type="hidden" name="toDelete" value="User">
                 <button class="btn del-add" type="submit">Suprimer mon compte</button>
             </form>
+            <?php endif;?>
         </div>
         
         <a class="btn del" href="index.php?action=adListByUser&idUser=<?=$user['idUser']?>">Toutes mes annonces</a>
