@@ -2,4 +2,7 @@ Projet web coté back en PHP
 Avant lancement du site sur serveur apache creez manuellement la BDD avec le ficher DB.sql
 Adaptez les parametres de connexion a la BDD dans config.ini
 
-Compte admin a creer avec adresse email: admin@admin.com
+Compte admin: 
+
+email: admin@admin.com
+pwd: Admin999**
