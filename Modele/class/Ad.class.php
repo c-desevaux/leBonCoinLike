@@ -74,7 +74,6 @@
             }else{
                 throw new AdException ("Description non valide");
             }
-
         }
 
         public function setPrice($price): void{
@@ -84,7 +83,6 @@
             }else{
                 throw new AdException ("Prix non valide");
             }
-
         }
 
         public function setUserId($userId): void {
