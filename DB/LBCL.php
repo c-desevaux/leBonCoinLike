@@ -13,7 +13,7 @@
 
         private static function connect(): PDO{
 
-            if(isset($_SESSION) && $_SESSION['login'] == "admin@admin.com"){
+            if(isset($_SESSION['login']) && $_SESSION['login'] == "admin@admin.com"){
                 $path = "DB/config.ini";
             }else{
                 $path="DB/configUser.ini";
@@ -49,7 +49,7 @@
 //Fonction qui permet de verifier l'existance de la table avant de faire les requetes sql
         public static function checkTables($table): bool{
 
-            if(isset($_SESSION) && $_SESSION['login'] == "admin@admin.com"){
+            if(isset($_SESSION['login']) && $_SESSION['login'] == "admin@admin.com"){
                 $path = "DB/config.ini";
             }else{
                 $path="DB/configUser.ini";
